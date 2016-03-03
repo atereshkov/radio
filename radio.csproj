@@ -53,6 +53,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Customer.cs" />
+    <Compile Include="DJ.cs" />
     <Compile Include="MusicCollection.cs" />
     <Compile Include="Playlist.cs" />
     <Compile Include="Song.cs" />
