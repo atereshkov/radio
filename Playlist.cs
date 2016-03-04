@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace radio
 {
-    class Playlist
+    class Playlist : ISearcher<Song>
     {
         private ObservableCollection<Song> songs = new ObservableCollection<Song>();
         public int Duration { get; private set; }
@@ -34,6 +34,11 @@ namespace radio
         {
             if (songs.Contains(song))
                 songs.Remove(song);
+        }
+
+        public Song search()
+        {
+            return new Song();
         }
 
     }

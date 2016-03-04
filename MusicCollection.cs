@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace radio
 {
-    class MusicCollection
+    class MusicCollection : ISearcher<Song>
     {
         private ObservableCollection<Song> songs = new ObservableCollection<Song>();
         private string name;
@@ -27,6 +27,11 @@ namespace radio
         public ObservableCollection<Song> getSongs ()
         {
             return songs;
+        }
+
+        public Song search()
+        {
+            return new Song();
         }
 
     }
