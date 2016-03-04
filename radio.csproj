@@ -55,6 +55,8 @@
     </ApplicationDefinition>
     <Compile Include="Customer.cs" />
     <Compile Include="DJ.cs" />
+    <Compile Include="IO\Loader.cs" />
+    <Compile Include="IO\Saver.cs" />
     <Compile Include="MusicCollection.cs" />
     <Compile Include="Playlist.cs" />
     <Compile Include="Song.cs" />

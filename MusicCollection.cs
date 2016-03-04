@@ -10,7 +10,24 @@ namespace radio
 {
     class MusicCollection
     {
-        private ObservableCollection<Song> Passwords = new ObservableCollection<Song>();
+        private ObservableCollection<Song> songs = new ObservableCollection<Song>();
         private string name;
+
+        public MusicCollection()
+        {
+
+        }
+
+        public MusicCollection (string filename, string name)
+        {
+            songs = Loader.ReadFromFile(filename);
+            this.name = name;
+        }
+
+        public ObservableCollection<Song> getSongs ()
+        {
+            return songs;
+        }
+
     }
 }
