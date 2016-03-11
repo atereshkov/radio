@@ -53,14 +53,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Customer.cs" />
-    <Compile Include="DJ.cs" />
+    <Compile Include="Users\Customer.cs" />
+    <Compile Include="Users\DJ.cs" />
     <Compile Include="IO\Loader.cs" />
     <Compile Include="IO\Saver.cs" />
     <Compile Include="ISearcher.cs" />
-    <Compile Include="MusicCollection.cs" />
-    <Compile Include="Playlist.cs" />
-    <Compile Include="Song.cs" />
+    <Compile Include="Collections\MusicCollection.cs" />
+    <Compile Include="Collections\Playlist.cs" />
+    <Compile Include="Models\Song.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,6 +102,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
