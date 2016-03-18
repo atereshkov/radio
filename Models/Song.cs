@@ -21,6 +21,7 @@ namespace radio.Models
         public string Album { get; set; }
         [XmlAttribute]
         public int Year { get; set; }
+
         [XmlArrayItem(Type = typeof(Tag))]
         public List<Tag> Tags { get; set; }
 
@@ -40,6 +41,11 @@ namespace radio.Models
             this.Tags = Tags;
             this.Genres = Genres;
             this.Year = Year;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
 
     }

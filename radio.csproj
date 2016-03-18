@@ -57,6 +57,8 @@
     <Compile Include="Interfaces\ISorter.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\TagsList.cs" />
+    <Compile Include="TrackOrder.cs" />
+    <Compile Include="TrackOrderList.cs" />
     <Compile Include="TrackOrderSystem.cs" />
     <Compile Include="Users\Customer.cs" />
     <Compile Include="Serialize\Loader.cs" />
