@@ -4,16 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Xml.Serialization;
+
 namespace radio
 {
-    class Song
+    [Serializable]
+    public class Song
     {
+        [XmlElement]
         public string Name { get; set; }
+        [XmlElement]
         public string Artist { get; set; }
+        [XmlElement]
         public int Duration { get; set; }
+        [XmlElement]
         public string Album { get; set; }
+        [XmlElement]
         public int Year { get; set; }
+        [XmlArrayItem(Type = typeof(Tag))]
         public List<Tag> Tags { get; set; }
+        [XmlElement]
         public string Path { get; set; }
 
         public Song() { }

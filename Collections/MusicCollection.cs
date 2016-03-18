@@ -34,5 +34,10 @@ namespace radio
             return new Song();
         }
 
+        public void add(Song song)
+        {
+            songs.Add(song);
+        }
+
     }
 }

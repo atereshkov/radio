@@ -31,7 +31,7 @@ namespace radio
             }
             catch (System.IO.IOException e)
             {
-                //  ("An error occurred: '{0}'", e);
+                
             }
 
             return songs;
