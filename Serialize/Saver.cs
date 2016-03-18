@@ -9,6 +9,8 @@ using System.Xml;
 using System.IO;
 using System.Xml.Serialization;
 
+using radio.Models;
+
 namespace radio
 {
     class Saver

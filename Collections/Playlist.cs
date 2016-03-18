@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 using System.Collections.ObjectModel;
 
-namespace radio
+using radio.Models;
+
+namespace radio.Collections
 {
     class Playlist : ISearcher<Song>
     {

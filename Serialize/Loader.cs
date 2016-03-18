@@ -10,6 +10,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 
+using radio.Models;
 
 namespace radio
 {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.Xml.Serialization;
 
-namespace radio
+namespace radio.Models
 {
     [XmlInclude(typeof(Tag))]
     public class TagsList

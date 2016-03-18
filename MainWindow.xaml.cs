@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using radio.Models;
+using radio.Collections;
+
 namespace radio
 {
     /// <summary>
@@ -35,9 +38,15 @@ namespace radio
             tags.Add(new Tag("tag1"));
             tags.Add(new Tag("tag2"));
 
-            MusicList.add(new Song("Song name1", "Super Artist", 200, tags, 2003));
+            List<Genre> genres = new List<Genre>();
+            genres.Add(new Genre("Pop"));
+            genres.Add(new Genre("Classical"));
+
+            MusicList.add(new Song("Song name1", "Super Artist", 200, tags, genres, 2003));
             Saver.SaveToFile("music_collection.xml", MusicList.getSongs());
 
+            MusicCollection musicTest = new MusicCollection();
+            musicTest.songs = Loader.ReadFromFile("music_collection.xml");
         }
     }
 }

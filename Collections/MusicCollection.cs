@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 using System.Collections.ObjectModel;
 
-namespace radio
+using radio.Models;
+
+namespace radio.Collections
 {
     class MusicCollection : ISearcher<Song>
     {
-        private ObservableCollection<Song> songs = new ObservableCollection<Song>();
+        public ObservableCollection<Song> songs { get; set; }
         private string name;
 
         public MusicCollection()
         {
-
+            this.songs = new ObservableCollection<Song>();
         }
 
         public MusicCollection (string filename, string name)

@@ -53,11 +53,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\TagsList.cs" />
     <Compile Include="Users\Customer.cs" />
     <Compile Include="Users\DJ.cs" />
-    <Compile Include="IO\Loader.cs" />
-    <Compile Include="IO\Saver.cs" />
+    <Compile Include="Serialize\Loader.cs" />
+    <Compile Include="Serialize\Saver.cs" />
     <Compile Include="ISearcher.cs" />
     <Compile Include="Collections\MusicCollection.cs" />
     <Compile Include="Collections\Playlist.cs" />

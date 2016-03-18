@@ -9,20 +9,19 @@ using System.Xml.Serialization;
 namespace radio.Models
 {
     [Serializable]
-    public class Tag
+    public class Genre
     {
         [XmlElement]
-        public String tag { get; set; }
+        public String genre { get; set; }
 
-        public Tag()
+        public Genre()
         {
 
         }
 
-        public Tag(String tag)
+        public Genre(String genre)
         {
-            this.tag = tag;
+            this.genre = genre;
         }
-
     }
 }

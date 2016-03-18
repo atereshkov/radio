@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.Xml.Serialization;
 
-namespace radio
+namespace radio.Models
 {
     [Serializable]
     public class Song
@@ -23,17 +23,22 @@ namespace radio
         public int Year { get; set; }
         [XmlArrayItem(Type = typeof(Tag))]
         public List<Tag> Tags { get; set; }
+
+        [XmlArrayItem(Type = typeof(Genre))]
+        public List<Genre> Genres { get; set; }
+
         [XmlElement]
         public string Path { get; set; }
 
         public Song() { }
 
-        public Song(string Name, string Artist, int Duration, List<Tag> Tags, int Year)
+        public Song(string Name, string Artist, int Duration, List<Tag> Tags, List<Genre> Genres, int Year)
         {
             this.Name = Name;
             this.Artist = Artist;
             this.Duration = Duration;
             this.Tags = Tags;
+            this.Genres = Genres;
             this.Year = Year;
         }
 
