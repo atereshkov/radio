@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace radio
 {
-    class Customer
+    class TrackOrderSystem
     {
-        public string Name { get; set; }
 
-        public Customer()
-        {
-
-        }
-
+        public TrackOrderSystem() { }
     }
 }

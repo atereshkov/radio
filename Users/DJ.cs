@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace radio
+namespace radio.Users
 {
-    class Customer
+    class DJ
     {
         public string Name { get; set; }
 
-        public Customer()
+        public DJ()
         {
 
         }

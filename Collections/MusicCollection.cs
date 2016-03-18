@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
 using radio.Models;
+using radio.Interfaces;
 
 namespace radio.Collections
 {
-    class MusicCollection : ISearcher<Song>
+    class MusicCollection : ISearcher<Song>, ISorter<Song>
     {
         public ObservableCollection<Song> songs { get; set; }
         private string name;
@@ -39,6 +40,26 @@ namespace radio.Collections
         public void add(Song song)
         {
             songs.Add(song);
+        }
+
+        public void sortByName()
+        {
+
+        }
+
+        public void sortByArtist()
+        {
+
+        }
+
+        public void sortByDuration()
+        {
+
+        }
+
+        public void sortByYear()
+        {
+
         }
 
     }

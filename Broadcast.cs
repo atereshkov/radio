@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace radio
 {
-    class Customer
+    class Broadcast
     {
-        public string Name { get; set; }
 
-        public Customer()
+        public Broadcast()
         {
 
         }

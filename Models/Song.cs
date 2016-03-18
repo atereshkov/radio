@@ -11,15 +11,15 @@ namespace radio.Models
     [Serializable]
     public class Song
     {
-        [XmlElement]
+        [XmlAttribute]
         public string Name { get; set; }
-        [XmlElement]
+        [XmlAttribute]
         public string Artist { get; set; }
-        [XmlElement]
+        [XmlAttribute]
         public int Duration { get; set; }
-        [XmlElement]
+        [XmlAttribute]
         public string Album { get; set; }
-        [XmlElement]
+        [XmlAttribute]
         public int Year { get; set; }
         [XmlArrayItem(Type = typeof(Tag))]
         public List<Tag> Tags { get; set; }
@@ -27,7 +27,7 @@ namespace radio.Models
         [XmlArrayItem(Type = typeof(Genre))]
         public List<Genre> Genres { get; set; }
 
-        [XmlElement]
+        [XmlIgnore]
         public string Path { get; set; }
 
         public Song() { }

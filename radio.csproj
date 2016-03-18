@@ -53,17 +53,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Broadcast.cs" />
+    <Compile Include="Interfaces\ISorter.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\TagsList.cs" />
+    <Compile Include="TrackOrderSystem.cs" />
     <Compile Include="Users\Customer.cs" />
-    <Compile Include="Users\DJ.cs" />
     <Compile Include="Serialize\Loader.cs" />
     <Compile Include="Serialize\Saver.cs" />
-    <Compile Include="ISearcher.cs" />
+    <Compile Include="Interfaces\ISearcher.cs" />
     <Compile Include="Collections\MusicCollection.cs" />
     <Compile Include="Collections\Playlist.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\Tag.cs" />
+    <Compile Include="Users\DJ.cs" />
+    <Compile Include="Users\DJAssistant.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
