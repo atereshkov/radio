@@ -13,51 +13,60 @@ namespace radio.Collections
 {
     class MusicCollection : ISearcher<Song>, ISorter<Song>
     {
-        public ObservableCollection<Song> songs { get; set; }
         private string name;
+
+        public ObservableCollection<Song> Songs { get; set; }
 
         public MusicCollection()
         {
-            this.songs = new ObservableCollection<Song>();
+            this.Songs = new ObservableCollection<Song>();
         }
 
         public MusicCollection (string filename, string name)
         {
-            songs = Loader.ReadFromFile(filename);
+            Songs = Loader.ReadFromFile(filename);
             this.name = name;
         }
 
         public ObservableCollection<Song> getSongs ()
         {
-            return songs;
+            return Songs;
         }
 
-        public Song search()
+        public Song Search()
         {
             return new Song();
         }
 
-        public void add(Song song)
+        public void Add(Song song)
         {
-            songs.Add(song);
+            Songs.Add(song);
         }
 
-        public void sortByName()
+        public void Remove(Song song)
         {
-
+            if (Songs.Contains(song))
+            {
+                Songs.Remove(song);
+            }
         }
 
-        public void sortByArtist()
-        {
-
-        }
-
-        public void sortByDuration()
+        public void SortByName()
         {
 
         }
 
-        public void sortByYear()
+        public void SortByArtist()
+        {
+
+        }
+
+        public void SortByDuration()
+        {
+
+        }
+
+        public void SortByYear()
         {
 
         }

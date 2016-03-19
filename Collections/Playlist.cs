@@ -10,9 +10,8 @@ using radio.Models;
 
 namespace radio.Collections
 {
-    class Playlist : ISearcher<Song>
+    class Playlist : MusicCollection
     {
-        private ObservableCollection<Song> songs = new ObservableCollection<Song>();
         public int Duration { get; private set; }
         private string name;
 
@@ -25,22 +24,6 @@ namespace radio.Collections
         {
             this.name = name;
             this.Duration = Duration;
-        }
-
-        public void add(Song song)
-        {
-            songs.Add(song);
-        }
-
-        public void remove(Song song)
-        {
-            if (songs.Contains(song))
-                songs.Remove(song);
-        }
-
-        public Song search()
-        {
-            return new Song();
         }
 
     }

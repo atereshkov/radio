@@ -42,11 +42,15 @@ namespace radio
             genres.Add(new Genre("Pop"));
             genres.Add(new Genre("Classical"));
 
-            MusicList.add(new Song("Song name1", "Super Artist", 200, tags, genres, 2003));
+            MusicList.Add(new Song("Song name1", "Super Artist", 200, tags, genres, 2003));
             Saver.SaveToFile("music_collection.xml", MusicList.getSongs());
 
             MusicCollection musicTest = new MusicCollection();
-            musicTest.songs = Loader.ReadFromFile("music_collection.xml");
+            musicTest.Songs = Loader.ReadFromFile("music_collection.xml");
+
+            Playlist playlist = new Playlist();
+            playlist.Add(new Song("some song", "artist", 2000, tags, genres, 2006));
+            
         }
     }
 }

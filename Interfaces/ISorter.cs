@@ -8,9 +8,9 @@ namespace radio.Interfaces
 {
     interface ISorter<T>
     {
-        void sortByName();
-        void sortByDuration();
-        void sortByArtist();
-        void sortByYear();
+        void SortByName();
+        void SortByDuration();
+        void SortByArtist();
+        void SortByYear();
     }
 }

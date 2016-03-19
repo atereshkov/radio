@@ -8,6 +8,6 @@ namespace radio
 {
     interface ISearcher <T>
     {
-        T search();
+        T Search();
     }
 }
