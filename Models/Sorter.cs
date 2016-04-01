@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 using radio.Collections;
 
-namespace radio.Interfaces
+namespace radio.Models
 {
-    interface ISorter<T>
+    class Sorter
     {
-        void Sort();
+        public void SortSongs(MusicCollection songs)
+        {
+            
+        }
     }
 }

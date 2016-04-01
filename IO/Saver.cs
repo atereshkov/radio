@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 using radio.Models;
 
-namespace radio
+namespace radio.IO
 {
     class Saver
     {

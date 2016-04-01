@@ -11,12 +11,19 @@ using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 
 using radio.Models;
+using radio.Interfaces;
 
-namespace radio
+namespace radio.IO
 {
-    class Loader
+    public class FromFileLoader : ILoader<ObservableCollection<Song>>
     {
-        public static ObservableCollection<Song> ReadFromFile(string filename)
+
+        public FromFileLoader(LoadParams loadParams)
+        {
+            
+        }
+
+        public ObservableCollection<Song> Load(LoadParams loadParams)
         {
             ObservableCollection<Song> songs = new ObservableCollection<Song>();
 
@@ -24,7 +31,7 @@ namespace radio
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Song>));
 
-                using (Stream reader = File.Open(filename, FileMode.Open))
+                using (Stream reader = File.Open(loadParams.Filename, FileMode.Open))
                 {
                     songs = (ObservableCollection<Song>)serializer.Deserialize(reader);
                 }

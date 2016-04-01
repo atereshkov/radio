@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using radio.Collections;
-
-namespace radio.Interfaces
+namespace radio.Compare
 {
-    interface ISorter<T>
+    public class MusicComparator
     {
-        void Sort();
+
     }
 }

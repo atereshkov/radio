@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 
 using radio.Models;
 using radio.Interfaces;
+using radio.Search;
+using radio.IO;
 
 namespace radio.Collections
 {
@@ -22,18 +24,14 @@ namespace radio.Collections
             this.Songs = new ObservableCollection<Song>();
         }
 
-        public MusicCollection (string filename, string name)
+        public MusicCollection (LoadParams loadParams, string name)
         {
-            Songs = Loader.ReadFromFile(filename);
+            ILoader<ObservableCollection<Song>> loader = new FromFileLoader(loadParams);
+            Songs = loader.Load(loadParams);
             this.name = name;
         }
 
-        public ObservableCollection<Song> getSongs ()
-        {
-            return Songs;
-        }
-
-        public Song Search()
+        public Song Search(SearchParams searchParams)
         {
             return new Song();
         }
@@ -51,22 +49,7 @@ namespace radio.Collections
             }
         }
 
-        public void SortByName()
-        {
-
-        }
-
-        public void SortByArtist()
-        {
-
-        }
-
-        public void SortByDuration()
-        {
-
-        }
-
-        public void SortByYear()
+        public void Sort()
         {
 
         }

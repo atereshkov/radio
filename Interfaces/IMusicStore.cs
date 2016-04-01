@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using radio.Collections;
-
 namespace radio.Interfaces
 {
-    interface ISorter<T>
+    interface IMusicStore
     {
-        void Sort();
+
     }
 }
