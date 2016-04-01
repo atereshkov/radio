@@ -59,7 +59,6 @@
     <Compile Include="Interfaces\IMusicStore.cs" />
     <Compile Include="Interfaces\ISorter.cs" />
     <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\Sorter.cs" />
     <Compile Include="Models\TagsList.cs" />
     <Compile Include="Saver\IMusicCollectionSaver.cs" />
     <Compile Include="Saver\SaveParams.cs" />

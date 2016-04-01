@@ -12,6 +12,9 @@ namespace radio.Models
     public class Song
     {
         [XmlAttribute]
+        public int ID { get; set; }
+
+        [XmlAttribute]
         public string Name { get; set; }
         [XmlAttribute]
         public string Artist { get; set; }
@@ -33,8 +36,9 @@ namespace radio.Models
 
         public Song() { }
 
-        public Song(string Name, string Artist, int Duration, List<Tag> Tags, List<Genre> Genres, int Year)
+        public Song(int ID, string Name, string Artist, int Duration, List<Tag> Tags, List<Genre> Genres, int Year)
         {
+            this.ID = ID;
             this.Name = Name;
             this.Artist = Artist;
             this.Duration = Duration;

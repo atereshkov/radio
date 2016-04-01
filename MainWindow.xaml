@@ -3,11 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="600" Width="903" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="400,387,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ListView HorizontalAlignment="Left" Height="299" Margin="10,250,0,0" VerticalAlignment="Top" Width="236">
+        <ListView x:Name="ListView1" HorizontalAlignment="Left" Height="299" Margin="10,250,0,0" VerticalAlignment="Top" Width="305">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding ID}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="ID">#</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Artist}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Artist">Artist</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="110" DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Name">Title</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="55" DisplayMemberBinding="{Binding Duration}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Duration">Duration</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
