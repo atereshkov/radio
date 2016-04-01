@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
 using radio.Models;
-using radio.Interfaces;
+using radio.Loader;
 using radio.Search;
-using radio.IO;
+using radio.Interfaces;
 
 namespace radio.Collections
 {
@@ -26,7 +26,7 @@ namespace radio.Collections
 
         public MusicCollection (LoadParams loadParams, string name)
         {
-            ILoader<ObservableCollection<Song>> loader = new FromFileLoader(loadParams);
+            ILoader<ObservableCollection<Song>> loader = new FromFileLoader();
             Songs = loader.Load(loadParams);
             this.name = name;
         }

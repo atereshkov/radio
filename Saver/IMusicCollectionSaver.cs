@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using radio.Search;
-
-namespace radio
+namespace radio.Saver
 {
-    interface ISearcher <T>
+    interface IMusicCollectionSaver
     {
-        T Search(SearchParams searchParams);
+        void Save(SaveParams saveParams);
     }
 }

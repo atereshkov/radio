@@ -11,14 +11,13 @@ using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 
 using radio.Models;
-using radio.Interfaces;
+using radio.Loader;
 
-namespace radio.IO
+namespace radio
 {
     public class FromFileLoader : ILoader<ObservableCollection<Song>>
     {
-
-        public FromFileLoader(LoadParams loadParams)
+        public FromFileLoader()
         {
             
         }

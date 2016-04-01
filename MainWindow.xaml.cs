@@ -7,7 +7,8 @@ using System.Windows;
 
 using radio.Models;
 using radio.Collections;
-using radio.IO;
+using radio.Loader;
+using radio.Saver;
 
 namespace radio
 {
@@ -23,13 +24,12 @@ namespace radio
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Saver.SaveToFile("music_collection.xml", MusicList.getSongs());
-
             LoadParams loadParams = new LoadParams("music_collection.xml");
+            MusicCollection musicList = new MusicCollection(loadParams, "music collection");
 
-            MusicCollection musicTest = new MusicCollection(loadParams, "music collection");
-
-
+            SaveParams saveParams = new SaveParams("music_collection.xml", musicList.Songs);
+            IMusicCollectionSaver toFileSaver = new ToFileSaver();
+            toFileSaver.Save(saveParams);
 
         }
     }
