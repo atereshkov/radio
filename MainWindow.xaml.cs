@@ -9,6 +9,7 @@ using radio.Models;
 using radio.Collections;
 using radio.Loader;
 using radio.Saver;
+using radio.Sort;
 
 namespace radio
 {
@@ -22,6 +23,10 @@ namespace radio
             MusicCollection musicList = new MusicCollection(loadParams, "music collection");
 
             ListView1.ItemsSource = musicList.Songs;
+
+            SortingStrategy context = new SortingStrategy();
+            context.SetStrategy(new SortByDuration(), musicList.Songs);
+            context.Sort();
 
             //SaveParams saveParams = new SaveParams("music_collection.xml", musicList.Songs);
             //IMusicCollectionSaver toFileSaver = new ToFileSaver();

@@ -54,7 +54,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Broadcast.cs" />
-    <Compile Include="Compare\MusicComparator.cs" />
+    <Compile Include="Collections\SortableObservableCollection.cs" />
+    <Compile Include="Sort\SortByDuration.cs" />
+    <Compile Include="Sort\SortByName.cs" />
+    <Compile Include="Sort\SortByArtist.cs" />
+    <Compile Include="Sort\ISortingStrategy.cs" />
     <Compile Include="Loader\ILoader.cs" />
     <Compile Include="Interfaces\IMusicStore.cs" />
     <Compile Include="Interfaces\ISorter.cs" />
@@ -64,6 +68,7 @@
     <Compile Include="Saver\SaveParams.cs" />
     <Compile Include="Search\SearchParams.cs" />
     <Compile Include="Loader\LoadParams.cs" />
+    <Compile Include="Sort\SortingStrategy.cs" />
     <Compile Include="TrackOrderSystem\TrackOrder.cs" />
     <Compile Include="TrackOrderSystem\TrackOrderSystem.cs" />
     <Compile Include="Users\Customer.cs" />
