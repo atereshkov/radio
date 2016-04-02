@@ -10,11 +10,22 @@ using radio.Collections;
 
 namespace radio.Sort
 {
-    public class SortByDuration : ISortingStrategy  // IComparer<Song>
+    public class SortByDuration : ISortingStrategy
     {
         public void Sort<Song>(ObservableCollection<Song> listToSort)
         {
-            
+            List<Song> tmp = new List<Song>();
+
+            foreach (Song song in listToSort)
+            {
+                tmp.Add(song);
+            }
+
+            DurationComparer comparer = new DurationComparer();
+            //tmp.Sort(comparer);
+
+            //var orderedSm = tmp.OrderBy(x => x.Duration).ToList();
+
         }
 
         /*

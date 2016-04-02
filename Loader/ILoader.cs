@@ -8,6 +8,6 @@ namespace radio.Loader
 {
     interface ILoader <T>
     {
-        T Load(LoadParams loadParams);
+        T Load();
     }
 }

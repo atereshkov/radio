@@ -55,6 +55,9 @@
     </ApplicationDefinition>
     <Compile Include="Broadcast.cs" />
     <Compile Include="Collections\SortableObservableCollection.cs" />
+    <Compile Include="Loader\FileLoadParams.cs" />
+    <Compile Include="Saver\FileSaveParams.cs" />
+    <Compile Include="Sort\DurationComparer.cs" />
     <Compile Include="Sort\SortByDuration.cs" />
     <Compile Include="Sort\SortByName.cs" />
     <Compile Include="Sort\SortByArtist.cs" />

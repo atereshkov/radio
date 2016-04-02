@@ -16,19 +16,23 @@ namespace radio
 {
     class ToFileSaver : IMusicCollectionSaver
     {
-        public ToFileSaver()
-        {
+        public string Filename { get; set; }
+        public ObservableCollection<Song> Songs { get; set; }
 
+        public ToFileSaver(FileSaveParams fileSaveParams)
+        {
+            this.Filename = fileSaveParams.Filename;
+            this.Songs = fileSaveParams.Songs;
         }
 
-        public void Save(SaveParams saveParams)
+        public void Save()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Song>));
 
             string serialization;
-            using (StreamWriter writer = new StreamWriter(saveParams.Filename, false))
+            using (StreamWriter writer = new StreamWriter(Filename, false))
             {
-                serializer.Serialize(writer, saveParams.Songs);
+                serializer.Serialize(writer, Songs);
                 serialization = writer.ToString();
             }
         }

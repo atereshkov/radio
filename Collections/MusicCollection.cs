@@ -24,10 +24,9 @@ namespace radio.Collections
             this.Songs = new ObservableCollection<Song>();
         }
 
-        public MusicCollection (LoadParams loadParams, string name)
+        public MusicCollection (ObservableCollection<Song> songs, string name)
         {
-            ILoader<ObservableCollection<Song>> loader = new FromFileLoader();
-            Songs = loader.Load(loadParams);
+            this.Songs = songs;
             this.name = name;
         }
 

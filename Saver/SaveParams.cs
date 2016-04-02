@@ -9,7 +9,7 @@ using radio.Models;
 
 namespace radio.Saver
 {
-    class SaveParams
+    abstract class SaveParams
     {
         public string Filename { get; set; }
         public ObservableCollection<Song> Songs { get; set; }

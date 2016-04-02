@@ -17,12 +17,14 @@ namespace radio
 {
     public class FromFileLoader : ILoader<ObservableCollection<Song>>
     {
-        public FromFileLoader()
+        public string Filename { get; set; }
+
+        public FromFileLoader(FileLoadParams fileLoadParams)
         {
-            
+            this.Filename = fileLoadParams.Filename;
         }
 
-        public ObservableCollection<Song> Load(LoadParams loadParams)
+        public ObservableCollection<Song> Load()
         {
             ObservableCollection<Song> songs = new ObservableCollection<Song>();
 
@@ -30,7 +32,7 @@ namespace radio
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Song>));
 
-                using (Stream reader = File.Open(loadParams.Filename, FileMode.Open))
+                using (Stream reader = File.Open(Filename, FileMode.Open))
                 {
                     songs = (ObservableCollection<Song>)serializer.Deserialize(reader);
                 }

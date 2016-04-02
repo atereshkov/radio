@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 using radio.Models;
 using radio.Collections;
@@ -19,18 +20,19 @@ namespace radio
         {
             InitializeComponent();
 
-            LoadParams loadParams = new LoadParams("music_collection.xml");
-            MusicCollection musicList = new MusicCollection(loadParams, "music collection");
+            FileLoadParams fileLoadParams = new FileLoadParams("music_collection.xml");
+            ILoader<ObservableCollection<Song>> fromFileLoader = new FromFileLoader(fileLoadParams);
+            MusicCollection musicList = new MusicCollection(fromFileLoader.Load(), "mus collection");
 
             ListView1.ItemsSource = musicList.Songs;
 
-            SortingStrategy context = new SortingStrategy();
-            context.SetStrategy(new SortByDuration(), musicList.Songs);
-            context.Sort();
+            SortingStrategy sortingStrategy = new SortingStrategy();
+            sortingStrategy.SetStrategy(new SortByDuration(), musicList.Songs);
+            sortingStrategy.Sort();
 
-            //SaveParams saveParams = new SaveParams("music_collection.xml", musicList.Songs);
-            //IMusicCollectionSaver toFileSaver = new ToFileSaver();
-            //toFileSaver.Save(saveParams); 11
+            //FileSaveParams fileSaveParams = new FileSaveParams("music_collection.xml", musicList.Songs);
+            //IMusicCollectionSaver toFileSaver = new ToFileSaver(fileSaveParams);
+            //toFileSaver.Save();
         }
 
     }

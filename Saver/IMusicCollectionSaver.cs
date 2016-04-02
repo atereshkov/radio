@@ -8,6 +8,6 @@ namespace radio.Saver
 {
     interface IMusicCollectionSaver
     {
-        void Save(SaveParams saveParams);
+        void Save();
     }
 }
