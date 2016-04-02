@@ -21,8 +21,15 @@ namespace radio.Sort
                 tmp.Add(song);
             }
 
+            listToSort.Clear();
+
             DurationComparer comparer = new DurationComparer();
-            //tmp.Sort(comparer);
+            tmp.Sort((IComparer<Song>)comparer);
+
+            foreach (Song song in tmp)
+            {
+                listToSort.Add(song);
+            }
 
             //var orderedSm = tmp.OrderBy(x => x.Duration).ToList();
 
