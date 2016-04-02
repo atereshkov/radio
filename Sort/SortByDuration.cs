@@ -14,48 +14,15 @@ namespace radio.Sort
     {
         public void Sort<Song>(ObservableCollection<Song> listToSort)
         {
-            List<Song> tmp = new List<Song>();
-
-            foreach (Song song in listToSort)
-            {
-                tmp.Add(song);
-            }
-
+            List<Song> tmp = new List<Song>(listToSort);
             listToSort.Clear();
 
-            DurationComparer comparer = new DurationComparer();
-            tmp.Sort((IComparer<Song>)comparer);
+            tmp.Sort((IComparer<Song>) new DurationComparer());
 
-            foreach (Song song in tmp)
+            foreach (Song song in tmp) // for notify observablecollection
             {
                 listToSort.Add(song);
             }
-
-            //var orderedSm = tmp.OrderBy(x => x.Duration).ToList();
-
         }
-
-        /*
-        public int Compare(Song x, Song y)
-        {
-            if (x.Duration.CompareTo(y.Duration) != 0)
-            {
-                return x.Duration.CompareTo(y.Duration);
-            }
-            else if (x.Duration.CompareTo(y.Duration) != 0)
-            {
-                return x.Duration.CompareTo(y.Duration);
-            }
-            else if (x.Duration.CompareTo(y.Duration) != 0)
-            {
-                return x.Duration.CompareTo(y.Duration);
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        */
-
     }
 }
