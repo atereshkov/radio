@@ -13,7 +13,7 @@ using radio.Interfaces;
 
 namespace radio.Collections
 {
-    class MusicCollection : ISearcher<Song>, ISorter<Song>
+    class MusicCollection : ISearcher<Song>
     {
         private string name;
 
@@ -46,11 +46,6 @@ namespace radio.Collections
             {
                 Songs.Remove(song);
             }
-        }
-
-        public void Sort()
-        {
-
         }
 
     }

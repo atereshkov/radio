@@ -13,7 +13,15 @@ namespace radio.Sort
     {
         public void Sort<Song>(ObservableCollection<Song> listToSort)
         {
-            Console.WriteLine("Выполняется алгоритм стратегии 2.");
+            List<Song> tmp = new List<Song>(listToSort);
+            listToSort.Clear();
+
+            tmp.Sort((IComparer<Song>)new ArtistComparer());
+
+            foreach (Song song in tmp) // for notify observablecollection
+            {
+                listToSort.Add(song);
+            }
         }
     }
 }

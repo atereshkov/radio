@@ -8,15 +8,11 @@ using radio.Models;
 
 namespace radio.Sort
 {
-    public class DurationComparer : IComparer<Song>
+    public class ArtistComparer : IComparer<Song>
     {
         int IComparer<Song>.Compare(Song x, Song y)
         {
-            if (x.Duration < y.Duration)
-                return 1;
-            if (x.Duration > y.Duration)
-                return -1;
-            else return 0;
+            return x.Artist.ToLower().CompareTo(y.Artist.ToLower());
         }
 
     }
