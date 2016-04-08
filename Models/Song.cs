@@ -33,6 +33,12 @@ namespace radio.Models
 
         [XmlIgnore]
         public string Path { get; set; }
+        [XmlIgnore]
+        public string StringDuration 
+        {
+            set { StringDuration = value; } 
+            get { return getStringDuration(Duration); }
+        }
 
         public Song() { }
 
@@ -50,6 +56,12 @@ namespace radio.Models
         public override string ToString()
         {
             return Name;
+        }
+
+        public string getStringDuration(int seconds)
+        {
+            TimeSpan time = TimeSpan.FromSeconds(seconds);
+            return time.ToString(@"hh\:mm\:ss");
         }
 
     }

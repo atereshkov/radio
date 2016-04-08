@@ -26,10 +26,12 @@ namespace radio
 
             ListView1.ItemsSource = musicList.Songs;
 
-            SortOrder order = SortOrder.Ascending; 
+            SortOrder order = SortOrder.Ascending;
             SortingStrategy sortingStrategy = new SortingStrategy();
             sortingStrategy.SetStrategy(new SortByDuration(), musicList.Songs, order);
             sortingStrategy.Sort();
+            
+            durationLabel.Content = musicList.getSongsCount() + " tracks (" + musicList.getStringDuration() + ")";
 
             //FileSaveParams fileSaveParams = new FileSaveParams("music_collection.xml", musicList.Songs);
             //IMusicCollectionSaver toFileSaver = new ToFileSaver(fileSaveParams);

@@ -4,7 +4,7 @@
         Title="MainWindow" Height="600" Width="903" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Grid>
-        <ListView x:Name="ListView1" HorizontalAlignment="Left" Height="299" Margin="0,250,0,0" VerticalAlignment="Top" Width="315">
+        <ListView x:Name="ListView1" HorizontalAlignment="Left" Height="345" Margin="0,184,0,0" VerticalAlignment="Top" Width="315">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="30" DisplayMemberBinding="{Binding ID}">
@@ -22,7 +22,7 @@
                             <GridViewColumnHeader Tag="Name">Title</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn Width="55" DisplayMemberBinding="{Binding Duration}">
+                    <GridViewColumn Width="65" DisplayMemberBinding="{Binding StringDuration}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="Duration">Duration</GridViewColumnHeader>
                         </GridViewColumn.Header>
@@ -38,15 +38,30 @@
             <MenuItem Header="Help"/>
         </Menu>
         <StackPanel HorizontalAlignment="Left" Height="35" Margin="0,20,0,0" VerticalAlignment="Top" Width="897" Background="#FFE0E0E0"/>
-        <StackPanel HorizontalAlignment="Left" Height="110" Margin="0,55,0,0" VerticalAlignment="Top" Width="446" Background="#FFD8E8FF"/>
+        <StackPanel HorizontalAlignment="Left" Height="119" Margin="0,55,0,0" VerticalAlignment="Top" Width="446" Background="#FFD8E8FF"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="148,96,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_start.png"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="95,96,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_previous.png"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="254,96,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_next.png"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="201,96,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_stop.png"/>
-        <Label Content="Listeners:" HorizontalAlignment="Left" Margin="766,25,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="95,28,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Listeners:" HorizontalAlignment="Left" Margin="780,25,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button Content="Start/Stop" HorizontalAlignment="Left" Margin="211,28,0,0" VerticalAlignment="Top" Width="104"/>
         <Label Content="Current song..." HorizontalAlignment="Left" Margin="95,60,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.554,0.442"/>
         <Image HorizontalAlignment="Left" Height="75" Margin="10,76,0,0" VerticalAlignment="Top" Width="75" Source="Images/icons/no_poster.png"/>
+        <Slider HorizontalAlignment="Left" Margin="96,144,0,0" VerticalAlignment="Top" Height="19" Width="206"/>
+        <Slider HorizontalAlignment="Left" Margin="297,118,0,0" VerticalAlignment="Top" Height="20" Width="59" RenderTransformOrigin="0.5,0.5" Value="11" BorderBrush="White">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.011"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Label Content="Broadcast:" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="offline" HorizontalAlignment="Left" Margin="75,24,0,0" VerticalAlignment="Top"/>
+        <Label Content="0" HorizontalAlignment="Left" Margin="839,25,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="durationLabel" Content="Label" HorizontalAlignment="Left" Margin="0,529,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

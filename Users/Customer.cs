@@ -9,6 +9,7 @@ namespace radio
     class Customer
     {
         public string Name { get; set; }
+        TrackOrder trackOrder;
 
         public Customer()
         {

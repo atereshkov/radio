@@ -15,7 +15,7 @@ namespace radio.Collections
 {
     class MusicCollection : ISearcher<Song>
     {
-        private string name;
+        public string Name { get; set; }
 
         public ObservableCollection<Song> Songs { get; set; }
 
@@ -27,7 +27,7 @@ namespace radio.Collections
         public MusicCollection (ObservableCollection<Song> songs, string name)
         {
             this.Songs = songs;
-            this.name = name;
+            this.Name = name;
         }
 
         public Song Search(SearchParams searchParams)
@@ -46,6 +46,28 @@ namespace radio.Collections
             {
                 Songs.Remove(song);
             }
+        }
+
+        public int getDuration()
+        {
+            int duration = 0;
+            foreach (Song song in Songs)
+            {
+                duration += song.Duration;
+            }
+
+            return duration;
+        }
+
+        public int getSongsCount()
+        {
+            return Songs.Count();
+        }
+
+        public string getStringDuration()
+        {
+            TimeSpan time = TimeSpan.FromSeconds(getDuration());
+            return time.ToString(@"hh\:mm\:ss");
         }
 
     }
