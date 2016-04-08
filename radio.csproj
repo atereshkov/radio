@@ -60,6 +60,7 @@
     <Compile Include="Sort\ArtistComparer.cs" />
     <Compile Include="Sort\DurationComparer.cs" />
     <Compile Include="Sort\NameComparer.cs" />
+    <Compile Include="Sort\SortingOrder.cs" />
     <Compile Include="Sort\SortByDuration.cs" />
     <Compile Include="Sort\SortByName.cs" />
     <Compile Include="Sort\SortByArtist.cs" />
@@ -126,7 +127,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\icons\player_fwd.png" />
     <Resource Include="Images\icons\play_back.png" />
@@ -135,6 +135,9 @@
     <Resource Include="Images\icons\play_previous.png" />
     <Resource Include="Images\icons\play_start.png" />
     <Resource Include="Images\icons\play_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\no_poster.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -26,8 +26,9 @@ namespace radio
 
             ListView1.ItemsSource = musicList.Songs;
 
+            SortOrder order = SortOrder.Ascending; 
             SortingStrategy sortingStrategy = new SortingStrategy();
-            sortingStrategy.SetStrategy(new SortByArtist(), musicList.Songs);
+            sortingStrategy.SetStrategy(new SortByDuration(), musicList.Songs, order);
             sortingStrategy.Sort();
 
             //FileSaveParams fileSaveParams = new FileSaveParams("music_collection.xml", musicList.Songs);

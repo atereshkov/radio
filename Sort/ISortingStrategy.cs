@@ -9,6 +9,6 @@ namespace radio.Sort
 {
     interface ISortingStrategy
     {
-        void Sort<T>(ObservableCollection<T> listToSort);
+        void Sort<T>(ObservableCollection<T> listToSort, SortOrder order);
     }
 }

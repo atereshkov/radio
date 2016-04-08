@@ -43,6 +43,10 @@
         <Image HorizontalAlignment="Left" Height="48" Margin="95,96,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_previous.png"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="254,96,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_next.png"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="201,96,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_stop.png"/>
+        <Label Content="Listeners:" HorizontalAlignment="Left" Margin="766,25,0,0" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="95,28,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Current song..." HorizontalAlignment="Left" Margin="95,60,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.554,0.442"/>
+        <Image HorizontalAlignment="Left" Height="75" Margin="10,76,0,0" VerticalAlignment="Top" Width="75" Source="Images/icons/no_poster.png"/>
 
     </Grid>
 </Window>

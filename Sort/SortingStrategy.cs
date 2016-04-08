@@ -13,27 +13,30 @@ namespace radio.Sort
     {
         private ISortingStrategy _strategy;
         private ObservableCollection<Song> listToSort;
+        private SortOrder order;
 
         public SortingStrategy()
         {
 
         }
 
-        public SortingStrategy(ISortingStrategy strategy, ObservableCollection<Song> listToSort)
+        public SortingStrategy(ISortingStrategy strategy, ObservableCollection<Song> listToSort, SortOrder order)
         {
             _strategy = strategy;
             this.listToSort = listToSort;
+            this.order = order;
         }
 
-        public void SetStrategy(ISortingStrategy strategy, ObservableCollection<Song> listToSort)
+        public void SetStrategy(ISortingStrategy strategy, ObservableCollection<Song> listToSort, SortOrder order)
         {
             _strategy = strategy;
             this.listToSort = listToSort;
+            this.order = order;
         }
 
         public void Sort()
         {
-            _strategy.Sort(listToSort);
+            _strategy.Sort(listToSort, order);
         }
     }
 }

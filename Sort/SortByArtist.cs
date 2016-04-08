@@ -11,12 +11,15 @@ namespace radio.Sort
 {
     public class SortByArtist : ISortingStrategy
     {
-        public void Sort<Song>(ObservableCollection<Song> listToSort)
+        public void Sort<Song>(ObservableCollection<Song> listToSort, SortOrder order)
         {
             List<Song> tmp = new List<Song>(listToSort);
             listToSort.Clear();
 
             tmp.Sort((IComparer<Song>)new ArtistComparer());
+
+            if (order == SortOrder.Ascending)
+                tmp.Reverse();
 
             foreach (Song song in tmp) // for notify observablecollection
             {
