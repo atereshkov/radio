@@ -18,5 +18,15 @@ namespace radio
 
         }
 
+        public void Start()
+        {
+
+        }
+
+        public void Stop()
+        {
+
+        }
+
     }
 }

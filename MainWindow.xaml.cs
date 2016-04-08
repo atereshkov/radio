@@ -28,7 +28,7 @@ namespace radio
 
             SortOrder order = SortOrder.Ascending;
             SortingStrategy sortingStrategy = new SortingStrategy();
-            sortingStrategy.SetStrategy(new SortByDuration(), musicList.Songs, order);
+            sortingStrategy.SetStrategy(new SortByName(), musicList.Songs, order);
             sortingStrategy.Sort();
             
             durationLabel.Content = musicList.getSongsCount() + " tracks (" + musicList.getStringDuration() + ")";

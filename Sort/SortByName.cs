@@ -17,7 +17,7 @@ namespace radio.Sort
             listToSort.Clear();
 
             tmp.Sort((IComparer<Song>)new NameComparer());
-            if (order == SortOrder.Ascending)
+            if (order != SortOrder.Ascending)
                 tmp.Reverse();
 
             foreach (Song song in tmp) // for notify observablecollection
