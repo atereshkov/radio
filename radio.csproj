@@ -60,16 +60,14 @@
     <Compile Include="Sort\ArtistComparer.cs" />
     <Compile Include="Sort\DurationComparer.cs" />
     <Compile Include="Sort\NameComparer.cs" />
+    <Compile Include="Sort\SortAdorner.cs" />
     <Compile Include="Sort\SortingOrder.cs" />
     <Compile Include="Sort\SortByDuration.cs" />
     <Compile Include="Sort\SortByName.cs" />
     <Compile Include="Sort\SortByArtist.cs" />
     <Compile Include="Sort\ISortingStrategy.cs" />
     <Compile Include="Loader\ILoader.cs" />
-    <Compile Include="Interfaces\IMusicStore.cs" />
-    <Compile Include="Interfaces\ISorter.cs" />
     <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\TagsList.cs" />
     <Compile Include="Saver\IMusicCollectionSaver.cs" />
     <Compile Include="Saver\SaveParams.cs" />
     <Compile Include="Search\SearchParams.cs" />

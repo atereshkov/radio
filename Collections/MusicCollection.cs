@@ -59,7 +59,7 @@ namespace radio.Collections
             return duration;
         }
 
-        public int getSongsCount()
+        public int Count()
         {
             return Songs.Count();
         }
