@@ -48,19 +48,18 @@ namespace radio
             SortOrder order = SortOrder.Ascending;
             SortingStrategy sortingStrategy = new SortingStrategy();
 
-            if (sortBy.Equals("Name"))
-            {
-                sortingStrategy.SetStrategy(new SortByName(), musicList.Songs, order);
-            }
+            Dictionary<string, ISortingStrategy> sorts = new Dictionary<string, ISortingStrategy>();
+            sorts.Add("Name", new SortByName());
+            sorts.Add("Artist", new SortByArtist());
+            sorts.Add("Duration", new SortByDuration());
 
-            if (sortBy.Equals("Artist"))
-            {  
-                sortingStrategy.SetStrategy(new SortByArtist(), musicList.Songs, order);
-            }
-
-            if (sortBy.Equals("Duration"))
+            try
             {
-                sortingStrategy.SetStrategy(new SortByDuration(), musicList.Songs, order);
+                sortingStrategy.SetStrategy(sorts[sortBy], musicList.Songs, order);
+            }
+            catch (KeyNotFoundException)
+            {
+                
             }
 
             sortingStrategy.Sort();

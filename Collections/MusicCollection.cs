@@ -9,7 +9,6 @@ using System.Collections.ObjectModel;
 using radio.Models;
 using radio.Loader;
 using radio.Search;
-using radio.Interfaces;
 
 namespace radio.Collections
 {
