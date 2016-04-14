@@ -8,6 +8,17 @@ namespace radio.Search
 {
     public class SearchParams
     {
+        public String Name { get; private set; }
+
+        public SearchParams()
+        {
+
+        }
+
+        public SearchParams(String name)
+        {
+            this.Name = name;
+        }
 
     }
 }

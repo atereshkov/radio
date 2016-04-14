@@ -12,7 +12,7 @@ using radio.Search;
 
 namespace radio.Collections
 {
-    class MusicCollection : ISearcher<Song>
+    class MusicCollection 
     {
         public string Name { get; set; }
 
@@ -27,11 +27,6 @@ namespace radio.Collections
         {
             this.Songs = songs;
             this.Name = name;
-        }
-
-        public Song Search(SearchParams searchParams)
-        {
-            return new Song();
         }
 
         public void Add(Song song)

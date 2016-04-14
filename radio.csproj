@@ -57,6 +57,11 @@
     <Compile Include="Collections\SortableObservableCollection.cs" />
     <Compile Include="Loader\FileLoadParams.cs" />
     <Compile Include="Saver\FileSaveParams.cs" />
+    <Compile Include="Search\ISearchingStrategy.cs" />
+    <Compile Include="Search\NameSearcher.cs" />
+    <Compile Include="Search\SearchingStrategy.cs" />
+    <Compile Include="Search\SearchByName.cs" />
+    <Compile Include="Search\SearchParams.cs" />
     <Compile Include="Sort\ArtistComparer.cs" />
     <Compile Include="Sort\DurationComparer.cs" />
     <Compile Include="Sort\NameComparer.cs" />
@@ -70,7 +75,6 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Saver\IMusicCollectionSaver.cs" />
     <Compile Include="Saver\SaveParams.cs" />
-    <Compile Include="Search\SearchParams.cs" />
     <Compile Include="Loader\LoadParams.cs" />
     <Compile Include="Sort\SortingStrategy.cs" />
     <Compile Include="TrackOrderSystem\TrackOrder.cs" />
@@ -78,7 +82,6 @@
     <Compile Include="Users\Customer.cs" />
     <Compile Include="Loader\FromFileLoader.cs" />
     <Compile Include="Saver\ToFileSaver.cs" />
-    <Compile Include="Search\ISearcher.cs" />
     <Compile Include="Collections\MusicCollection.cs" />
     <Compile Include="Collections\Playlist.cs" />
     <Compile Include="Models\Song.cs" />

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using radio.Search;
+using radio.Models;
 
 namespace radio.Search
 {
-    interface ISearcher <T>
+    public class NameSearcher
     {
-        T Search(SearchParams searchParams);
+
     }
 }

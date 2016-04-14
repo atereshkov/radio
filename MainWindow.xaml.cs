@@ -38,6 +38,15 @@ namespace radio
             //FileSaveParams fileSaveParams = new FileSaveParams("music_collection.xml", musicList.Songs);
             //IMusicCollectionSaver toFileSaver = new ToFileSaver(fileSaveParams);
             //toFileSaver.Save();
+
+            ObservableCollection<string> searchList = new ObservableCollection<string>();
+            searchList.Add("Name");
+            searchList.Add("Artist");
+            searchList.Add("Duration");
+            searchComboBox.ItemsSource = searchList;
+
+
+
         }
 
         private void ListView1ColumnHeader_Click(object sender, RoutedEventArgs e)
