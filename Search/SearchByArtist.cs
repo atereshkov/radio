@@ -9,9 +9,9 @@ using radio.Models;
 
 namespace radio.Search
 {
-    public class ArtistSearcher : ISearchingStrategy<Song>
+    public class SearchByArtist : ISearchingStrategy<Song>
     {
-        public ObservableCollection<Song> Search(ArtistSearchParams searchParams, ObservableCollection<Song> listToSearch)
+        public ObservableCollection<Song> Search(SearchParams searchParams, ObservableCollection<Song> listToSearch)
         {
             ObservableCollection<Song> searchResults = new ObservableCollection<Song>();
 

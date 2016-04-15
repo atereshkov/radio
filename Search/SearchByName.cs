@@ -11,7 +11,7 @@ namespace radio.Search
 {
     public class SearchByName : ISearchingStrategy<Song>
     {
-        public ObservableCollection<Song> Search(NameSearchParams searchParams, ObservableCollection<Song> listToSearch)
+        public ObservableCollection<Song> Search(SearchParams searchParams, ObservableCollection<Song> listToSearch)
         {
             ObservableCollection<Song> searchResults = new ObservableCollection<Song>();
 
