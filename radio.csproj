@@ -57,8 +57,11 @@
     <Compile Include="Collections\SortableObservableCollection.cs" />
     <Compile Include="Loader\FileLoadParams.cs" />
     <Compile Include="Saver\FileSaveParams.cs" />
+    <Compile Include="Search\ArtistSearcher.cs" />
+    <Compile Include="Search\ArtistSearchParams.cs" />
     <Compile Include="Search\ISearchingStrategy.cs" />
     <Compile Include="Search\NameSearcher.cs" />
+    <Compile Include="Search\NameSearchParams.cs" />
     <Compile Include="Search\SearchByName.cs" />
     <Compile Include="Search\SearchingStrategy.cs" />
     <Compile Include="Search\SearchParams.cs" />

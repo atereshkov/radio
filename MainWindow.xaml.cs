@@ -88,7 +88,7 @@ namespace radio
                     //sorts.Add("Artist", new SearchByArtist());
                     //sorts.Add("Duration", new SearchByDuration());
 
-                    SearchParams searchParams = new SearchParams(searchBox.Text);
+                    NameSearchParams searchParams = new NameSearchParams(searchBox.Text);
                     try
                     {
                         searchingStrategy.SetStrategy(searchs[searchComboBox.Text], musicList.Songs, searchParams);

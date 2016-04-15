@@ -9,23 +9,22 @@ using radio.Models;
 
 namespace radio.Search
 {
-    public class SearchByName : ISearchingStrategy<Song>
+    public class ArtistSearcher : ISearchingStrategy<Song>
     {
-        public ObservableCollection<Song> Search(NameSearchParams searchParams, ObservableCollection<Song> listToSearch)
+        public ObservableCollection<Song> Search(ArtistSearchParams searchParams, ObservableCollection<Song> listToSearch)
         {
             ObservableCollection<Song> searchResults = new ObservableCollection<Song>();
 
             foreach (Song song in listToSearch)
             {
-                if (song.Name.ToLower().Contains(searchParams.Name.ToLower()))
+                if (song.Artist.ToLower().Contains(searchParams.Artist.ToLower()))
                 {
                     searchResults.Add(song);
                 }
             }
 
-            //ObservableCollection<Song> listItems = listToSearch.Where(i => i.Name.Equals(searchParams.Name));
-
             return searchResults;
         }
+
     }
 }

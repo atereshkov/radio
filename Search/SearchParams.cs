@@ -6,18 +6,11 @@ using System.Threading.Tasks;
 
 namespace radio.Search
 {
-    public class SearchParams
+    public abstract class SearchParams
     {
-        public String Name { get; private set; }
-
         public SearchParams()
         {
 
-        }
-
-        public SearchParams(String name)
-        {
-            this.Name = name;
         }
 
     }
