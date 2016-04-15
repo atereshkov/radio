@@ -14,12 +14,17 @@ using radio.Saver;
 using radio.Sort;
 using radio.Search;
 
+using radio.DragDropListView;
+
 namespace radio
 {
     public partial class MainWindow : Window
     {
         MusicCollection musicList;
         Playlist playlist;
+
+        ListViewDragDropManager<Song> dragMgr;
+        ListViewDragDropManager<Song> dragMgr2;
 
         public MainWindow()
         {
@@ -46,6 +51,16 @@ namespace radio
             searchList.Add("Duration");
             searchComboBox.ItemsSource = searchList;
             searchComboBox.SelectedItem = searchList[0];
+
+            dragMgr = new ListViewDragDropManager<Song>(this.ListView1);
+            dragMgr2 = new ListViewDragDropManager<Song>(this.playlistListView);
+
+            ListView1.DragEnter += OnListViewDragEnter;
+            playlistListView.DragEnter += OnListViewDragEnter;
+            ListView1.Drop += OnListViewDrop;
+            playlistListView.Drop += OnListViewDrop;
+
+            dragMgr.ShowDragAdorner = true;
 
         }
 
@@ -85,8 +100,6 @@ namespace radio
 
                     Dictionary<string, ISearchingStrategy<Song>> searchs = new Dictionary<string, ISearchingStrategy<Song>>();
                     searchs.Add("Name", new SearchByName());
-                    //sorts.Add("Artist", new SearchByArtist());
-                    //sorts.Add("Duration", new SearchByDuration());
 
                     SearchParams searchParams = new SearchParams(searchBox.Text);
                     try
@@ -105,6 +118,87 @@ namespace radio
             catch (NullReferenceException ex) { }
             
         }
+
+
+        //
+        #region dragMgr_ProcessDrop
+
+        void dragMgr_ProcessDrop( object sender, ProcessDropEventArgs<Song> e )
+		{
+			// This shows how to customize the behavior of a drop.
+			// Here we perform a swap, instead of just moving the dropped item.
+
+			int higherIdx = Math.Max( e.OldIndex, e.NewIndex );
+			int lowerIdx = Math.Min( e.OldIndex, e.NewIndex );
+
+			if( lowerIdx < 0 )
+			{
+				// The item came from the lower ListView
+				// so just insert it.
+				e.ItemsSource.Insert( higherIdx, e.DataItem );
+			}
+			else
+			{
+				// null values will cause an error when calling Move.
+				// It looks like a bug in ObservableCollection to me.
+				if( e.ItemsSource[lowerIdx] == null ||
+					e.ItemsSource[higherIdx] == null )
+					return;
+
+				// The item came from the ListView into which
+				// it was dropped, so swap it with the item
+				// at the target index.
+				e.ItemsSource.Move( lowerIdx, higherIdx );
+				e.ItemsSource.Move( higherIdx - 1, lowerIdx );
+			}
+
+			// Set this to 'Move' so that the OnListViewDrop knows to 
+			// remove the item from the other ListView.
+			e.Effects = DragDropEffects.Move;
+		}
+
+		#endregion // dragMgr_ProcessDrop
+
+		#region OnListViewDragEnter
+
+		// Handles the DragEnter event for both ListViews.
+		void OnListViewDragEnter( object sender, DragEventArgs e )
+		{
+			e.Effects = DragDropEffects.Move;
+		}
+
+		#endregion // OnListViewDragEnter
+
+		#region OnListViewDrop
+
+		// Handles the Drop event for both ListViews.
+		void OnListViewDrop( object sender, DragEventArgs e )
+		{
+			if( e.Effects == DragDropEffects.None )
+				return;
+
+			Song task = e.Data.GetData( typeof( Song ) ) as Song;
+			if( sender == this.ListView1 )
+			{
+				if( this.dragMgr.IsDragInProgress )
+					return;
+
+				// An item was dragged from the bottom ListView into the top ListView
+				// so remove that item from the bottom ListView.
+				(this.playlistListView.ItemsSource as ObservableCollection<Song>).Remove(task);
+			}
+			else
+			{
+				if( this.dragMgr2.IsDragInProgress )
+					return;
+
+				// An item was dragged from the top ListView into the bottom ListView
+				// so remove that item from the top ListView.
+				(this.ListView1.ItemsSource as ObservableCollection<Song>).Remove(task);
+			}
+		}
+
+		#endregion // OnListViewDrop
 
     }
 }

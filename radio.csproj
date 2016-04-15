@@ -55,6 +55,9 @@
     </ApplicationDefinition>
     <Compile Include="Broadcast.cs" />
     <Compile Include="Collections\SortableObservableCollection.cs" />
+    <Compile Include="DragDropListView\DragAdorner.cs" />
+    <Compile Include="DragDropListView\ListViewDragDropManager.cs" />
+    <Compile Include="DragDropListView\MouseUtilities.cs" />
     <Compile Include="Loader\FileLoadParams.cs" />
     <Compile Include="Saver\FileSaveParams.cs" />
     <Compile Include="Search\SearchByArtist.cs" />
