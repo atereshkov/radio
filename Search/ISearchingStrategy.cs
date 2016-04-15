@@ -7,8 +7,8 @@ using System.Collections.ObjectModel;
 
 namespace radio.Search
 {
-    interface ISearchingStrategy
+    interface ISearchingStrategy <T>
     {
-        ObservableCollection<T> Search<T>(SearchParams searchParams, ObservableCollection<T> listToSearch);
+        ObservableCollection<T> Search(SearchParams searchParams, ObservableCollection<T> listToSearch);
     }
 }

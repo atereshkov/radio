@@ -12,6 +12,7 @@ using radio.Collections;
 using radio.Loader;
 using radio.Saver;
 using radio.Sort;
+using radio.Search;
 
 namespace radio
 {
@@ -44,8 +45,7 @@ namespace radio
             searchList.Add("Artist");
             searchList.Add("Duration");
             searchComboBox.ItemsSource = searchList;
-
-
+            searchComboBox.SelectedItem = searchList[0];
 
         }
 
@@ -73,6 +73,37 @@ namespace radio
 
             sortingStrategy.Sort();
 
+        }
+
+        private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (searchBox.Text != "")
+                {
+                    SearchingStrategy searchingStrategy = new SearchingStrategy();
+
+                    Dictionary<string, ISearchingStrategy<Song>> searchs = new Dictionary<string, ISearchingStrategy<Song>>();
+                    searchs.Add("Name", new SearchByName());
+                    //sorts.Add("Artist", new SearchByArtist());
+                    //sorts.Add("Duration", new SearchByDuration());
+
+                    SearchParams searchParams = new SearchParams(searchBox.Text);
+                    try
+                    {
+                        searchingStrategy.SetStrategy(searchs[searchComboBox.Text], musicList.Songs, searchParams);
+                    }
+                    catch (KeyNotFoundException keyNotFoundEx) { }
+                    
+                    ListView1.ItemsSource = searchingStrategy.Search();
+                }
+                else
+                {
+                    ListView1.ItemsSource = musicList.Songs;
+                }
+            }
+            catch (NullReferenceException ex) { }
+            
         }
 
     }

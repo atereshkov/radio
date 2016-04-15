@@ -9,34 +9,34 @@ using radio.Models;
 
 namespace radio.Search
 {
-    class SortingStrategy
+    class SearchingStrategy
     {
-        private ISearchingStrategy _strategy;
+        private ISearchingStrategy<Song> _strategy;
         private ObservableCollection<Song> listToSearch;
         private SearchParams searchParams;
 
-        public SortingStrategy()
+        public SearchingStrategy()
         {
 
         }
 
-        public SortingStrategy(ISearchingStrategy strategy, ObservableCollection<Song> listToSearch, SearchParams searchParams)
+        public SearchingStrategy(ISearchingStrategy<Song> strategy, ObservableCollection<Song> listToSearch, SearchParams searchParams)
         {
             _strategy = strategy;
             this.listToSearch = listToSearch;
             this.searchParams = searchParams;
         }
 
-        public void SetStrategy(ISearchingStrategy strategy, ObservableCollection<Song> listToSearch, SearchParams searchParams)
+        public void SetStrategy(ISearchingStrategy<Song> strategy, ObservableCollection<Song> listToSearch, SearchParams searchParams)
         {
             _strategy = strategy;
             this.listToSearch = listToSearch;
             this.searchParams = searchParams;
         }
 
-        public void Search()
+        public ObservableCollection<Song> Search()
         {
-            _strategy.Search(searchParams, listToSearch);
+            return _strategy.Search(searchParams, listToSearch);
         }
     }
 }
