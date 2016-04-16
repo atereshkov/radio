@@ -63,7 +63,6 @@
     <Compile Include="Search\SearchByArtist.cs" />
     <Compile Include="Search\ArtistSearchParams.cs" />
     <Compile Include="Search\ISearchingStrategy.cs" />
-    <Compile Include="Search\NameSearcher.cs" />
     <Compile Include="Search\NameSearchParams.cs" />
     <Compile Include="Search\SearchByName.cs" />
     <Compile Include="Search\SearchingStrategy.cs" />

@@ -99,7 +99,7 @@ namespace radio
                     SearchingStrategy searchingStrategy = new SearchingStrategy();
 
                     Dictionary<string, ISearchingStrategy<Song>> searchs = new Dictionary<string, ISearchingStrategy<Song>>();
-                    searchs.Add("Name", new SearchByName());
+                    searchs.Add("Name", new SearchByName()); // array, searchcriteria, artistsearchcriteria
 
                     SearchParams searchParams = new SearchParams(searchBox.Text);
                     try
