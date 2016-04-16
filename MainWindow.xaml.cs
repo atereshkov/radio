@@ -98,17 +98,26 @@ namespace radio
                 {
                     SearchingStrategy searchingStrategy = new SearchingStrategy();
 
-                    Dictionary<string, ISearchingStrategy<Song>> searchs = new Dictionary<string, ISearchingStrategy<Song>>();
-                    searchs.Add("Name", new SearchByName()); // array, searchcriteria, artistsearchcriteria
+                    GeneralSearcher generalSearcher = new GeneralSearcher();
 
+                    Dictionary<string, ISearchingStrategy<Song>> searchs = new Dictionary<string, ISearchingStrategy<Song>>();
+                    searchs.Add("Name", new SearchByName()); // array, searchcriteria, artistsearchcriteria, пробежать по комбобоксу,
+                    // собрать все чекбоксы отмеченные, передать как массив в поисковик и вернуть все что нашли по чекнутым полям
+
+                    Dictionary<string, SearchCriteria> criteria = new Dictionary<string, SearchCriteria>();
+                    criteria.Add("Name", new NameSearchCriteria(searchBox.Text)); // add all who checked
+
+                    /*
                     SearchParams searchParams = new SearchParams(searchBox.Text);
                     try
                     {
                         searchingStrategy.SetStrategy(searchs[searchComboBox.Text], musicList.Songs, searchParams);
+
                     }
                     catch (KeyNotFoundException keyNotFoundEx) { }
-                    
-                    ListView1.ItemsSource = searchingStrategy.Search();
+                    */                
+
+                    ListView1.ItemsSource = generalSearcher.Search(criteria, musicList.Songs);
                 }
                 else
                 {
