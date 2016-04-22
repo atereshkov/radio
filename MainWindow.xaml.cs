@@ -13,6 +13,7 @@ using radio.Loader;
 using radio.Saver;
 using radio.Sort;
 using radio.Search;
+using radio.Dialogs;
 
 using radio.DragDropListView;
 
@@ -30,13 +31,13 @@ namespace radio
         {
             InitializeComponent();
 
-            FileLoadParams fileLoadParams = new FileLoadParams("music_collection.xml");
-            ILoader<ObservableCollection<Song>> fromFileLoader = new FromFileLoader(fileLoadParams);
-            musicList = new MusicCollection(fromFileLoader.Load(), "music collection");
+            //FileLoadParams fileLoadParams = new FileLoadParams("music_collection.xml");
+            //ILoader<ObservableCollection<Song>> fromFileLoader = new FromFileLoader(fileLoadParams);
+            //musicList = new MusicCollection(fromFileLoader.Load(), "music collection");
 
-            ListView1.ItemsSource = musicList.Songs;
+            //ListView1.ItemsSource = musicList.Songs;
             
-            durationLabel.Content = musicList.Count() + " tracks (" + musicList.getStringDuration() + ")";
+            //durationLabel.Content = musicList.Count() + " tracks (" + musicList.getStringDuration() + ")";
 
             playlist = new Playlist();
             playlistListView.ItemsSource = playlist.Songs;
@@ -129,7 +130,7 @@ namespace radio
         }
 
 
-        //
+        // for drag and drop
         #region dragMgr_ProcessDrop
 
         void dragMgr_ProcessDrop( object sender, ProcessDropEventArgs<Song> e )
@@ -208,6 +209,30 @@ namespace radio
 		}
 
 		#endregion // OnListViewDrop
+
+        private void openMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            string rez;
+            CustomOpenDialog customOpenDialog = new CustomOpenDialog();
+
+            if (customOpenDialog.Create(out rez))
+            {
+                FileLoadParams fileLoadParams = new FileLoadParams(rez);
+                ILoader<ObservableCollection<Song>> fromFileLoader = new FromFileLoader(fileLoadParams);
+                musicList = new MusicCollection(fromFileLoader.Load(), "music collection");
+
+                ListView1.ItemsSource = musicList.Songs;
+
+                durationLabel.Content = musicList.Count() + " tracks (" + musicList.getStringDuration() + ")";
+
+                if (ListView1.Items != null)
+                {
+                    ListView1.SelectedIndex = 0;
+                }
+
+                //Log.LogMessage("Open database: " + PWList.DataBaseName);
+            }
+        }
 
     }
 }

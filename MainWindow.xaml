@@ -32,7 +32,9 @@
         </ListView>
         <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="895">
             <MenuItem Header="File"/>
-            <MenuItem Header="Collection"/>
+            <MenuItem Header="Collection">
+                <MenuItem x:Name="openMenuItem" Header="Open" HorizontalAlignment="Left" Width="140" Click="openMenuItem_Click"/>
+            </MenuItem>
             <MenuItem Header="Playlist"/>
             <MenuItem Header="Tools"/>
             <MenuItem Header="Help"/>

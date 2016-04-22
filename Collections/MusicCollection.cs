@@ -64,5 +64,10 @@ namespace radio.Collections
             return time.ToString(@"hh\:mm\:ss");
         }
 
+        public void Clear()
+        {
+            Songs.Clear();
+        }
+
     }
 }
