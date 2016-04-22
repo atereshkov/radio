@@ -56,6 +56,7 @@
     <Compile Include="Broadcast.cs" />
     <Compile Include="Collections\SortableObservableCollection.cs" />
     <Compile Include="Dialogs\CustomOpenDialog.cs" />
+    <Compile Include="Dialogs\CustomSaveDialog.cs" />
     <Compile Include="DragDropListView\DragAdorner.cs" />
     <Compile Include="DragDropListView\ListViewDragDropManager.cs" />
     <Compile Include="DragDropListView\MouseUtilities.cs" />

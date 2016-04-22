@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
-
 using radio.Models;
 using radio.Collections;
 using radio.Loader;
@@ -196,6 +195,7 @@ namespace radio
 				// An item was dragged from the bottom ListView into the top ListView
 				// so remove that item from the bottom ListView.
 				(this.playlistListView.ItemsSource as ObservableCollection<Song>).Remove(task);
+                DurationCalculating();
 			}
 			else
 			{
@@ -205,6 +205,7 @@ namespace radio
 				// An item was dragged from the top ListView into the bottom ListView
 				// so remove that item from the top ListView.
 				(this.ListView1.ItemsSource as ObservableCollection<Song>).Remove(task);
+                DurationCalculating();
 			}
 		}
 
@@ -232,6 +233,21 @@ namespace radio
 
                 //Log.LogMessage("Open database: " + PWList.DataBaseName);
             }
+        }
+
+        private void saveMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            CustomSaveDialog customSaveDialog = new CustomSaveDialog();
+            customSaveDialog.Create("collection", ".xml", 
+                "XML files (*.xml)|*.xml|All files (*.*)|*.*", musicList.Songs);
+        }
+
+        private void DurationCalculating()
+        {
+            durationLabel.Content = musicList.Count() + " tracks (" + musicList.getStringDuration() + ")";
+
+            playlistDurationLabel.Content = playlist.Count() + " tracks ("
+                + playlist.getStringDuration() + ")";
         }
 
     }
