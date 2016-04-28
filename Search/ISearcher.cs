@@ -8,8 +8,8 @@ using System.Collections.ObjectModel;
 
 namespace radio.Search
 {
-    interface ISearcher<T>
+    interface ISearcher<T, T2>
     {
-        ObservableCollection<T> Search(Dictionary<string, SearchCriteria> criteria, ObservableCollection<T> listToSearch);
+        ObservableCollection<T> Search(Dictionary<string, ISearchingCriteria<T2>> criteria, ObservableCollection<T> listToSearch);
     }
 }

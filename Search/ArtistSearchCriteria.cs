@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace radio.Search
 {
-    public class NameSearchCriteria : ISearchingCriteria<String>
+    public class ArtistSearchCriteria : ISearchingCriteria<String>
     {
-        public string Name { get; set; }
+        public string Artist { get; set; }
 
-        public NameSearchCriteria()
+        public ArtistSearchCriteria()
         {
 
         }
 
-        public NameSearchCriteria(String name)
+        public ArtistSearchCriteria(String artist)
         {
-            this.Name = name;
+            this.Artist = artist;
         }
 
         public new string getCriteria()
         {
-            return Name;
+            return Artist;
         }
 
     }

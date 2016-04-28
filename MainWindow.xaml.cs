@@ -100,22 +100,13 @@ namespace radio
 
                     GeneralSearcher generalSearcher = new GeneralSearcher();
 
-                    Dictionary<string, ISearchingStrategy<Song>> searchs = new Dictionary<string, ISearchingStrategy<Song>>();
-                    searchs.Add("Name", new SearchByName()); // array, searchcriteria, artistsearchcriteria, пробежать по комбобоксу,
-                    // собрать все чекбоксы отмеченные, передать как массив в поисковик и вернуть все что нашли по чекнутым полям
+                    //Dictionary<string, ISearchingStrategy<Song>> searchs = new Dictionary<string, ISearchingStrategy<Song>>();
+                    //searchs.Add("Name", new SearchByName()); // array, searchcriteria, artistsearchcriteria, пробежать по комбобоксу,
+                    //// собрать все чекбоксы отмеченные, передать как массив в поисковик и вернуть все что нашли по чекнутым полям
 
-                    Dictionary<string, SearchCriteria> criteria = new Dictionary<string, SearchCriteria>();
+                    Dictionary<string, ISearchingCriteria<String>> criteria = new Dictionary<string, ISearchingCriteria<String>>();
                     criteria.Add("Name", new NameSearchCriteria(searchBox.Text)); // add all who checked
-
-                    /*
-                    SearchParams searchParams = new SearchParams(searchBox.Text);
-                    try
-                    {
-                        searchingStrategy.SetStrategy(searchs[searchComboBox.Text], musicList.Songs, searchParams);
-
-                    }
-                    catch (KeyNotFoundException keyNotFoundEx) { }
-                    */                
+                    criteria.Add("Artist", new ArtistSearchCriteria(searchBox.Text));
 
                     ListView1.ItemsSource = generalSearcher.Search(criteria, musicList.Songs);
                 }

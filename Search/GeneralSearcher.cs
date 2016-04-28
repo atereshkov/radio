@@ -9,22 +9,24 @@ using radio.Models;
 
 namespace radio.Search
 {
-    public class GeneralSearcher : ISearcher<Song>
+    public class GeneralSearcher : ISearcher<Song, String>
     {
         public GeneralSearcher()
         {
 
         }
 
-        public ObservableCollection<Song> Search(Dictionary<string, SearchCriteria> criteria, ObservableCollection<Song> listToSearch)
+        public ObservableCollection<Song> Search(Dictionary<string, ISearchingCriteria<String>> criteria, ObservableCollection<Song> listToSearch)
         {
             ObservableCollection<Song> searchResults = new ObservableCollection<Song>();
 
-            foreach (KeyValuePair<string, SearchCriteria> kvp in criteria)
+            foreach (KeyValuePair<string, ISearchingCriteria<String>> kvp in criteria)
             {
                 foreach (Song song in listToSearch)
                 {
-                    if (song.Name.Contains(kvp.Value.getCriteria()) && !searchResults.Contains(song)) // TODO: ...
+                    if (song.Name.Contains(kvp.Value.getCriteria()) || 
+                        song.Artist.Contains(kvp.Value.getCriteria()) && 
+                        !searchResults.Contains(song))
                     {
                         searchResults.Add(song);
                     }
