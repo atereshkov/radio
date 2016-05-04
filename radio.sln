@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "radio", "radio.csproj", "{EB590CB1-EBA9-40C4-A6B0-CC158C64565B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiSelectComboBox", "..\..\..\..\IDEA_Projects\MultiSelectComboBox Demo(MVVM)\MultiSelectComboBox\MultiSelectComboBox.csproj", "{CE17A54E-0661-429F-AFDC-272E8668B14E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{EB590CB1-EBA9-40C4-A6B0-CC158C64565B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB590CB1-EBA9-40C4-A6B0-CC158C64565B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB590CB1-EBA9-40C4-A6B0-CC158C64565B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
