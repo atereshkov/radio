@@ -16,6 +16,8 @@ using radio.Dialogs;
 
 using radio.DragDropListView;
 
+using AutoMapper;
+
 namespace radio
 {
     public partial class MainWindow : Window
@@ -62,6 +64,19 @@ namespace radio
 
             dragMgr.ShowDragAdorner = true;
 
+            // AutoMapper test:
+
+            List<Tag> tags = new List<Tag>();
+            List<Genre> genres = new List<Genre>();
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Song, SongDto>());
+            var mapper = config.CreateMapper();
+
+            var song = new Song(10, "Name", "Artist", 400, tags, genres, 1992);
+            SongDto dto = mapper.Map<SongDto>(song);
+
+            config.AssertConfigurationIsValid();
+
         }
 
         private void ListView1ColumnHeader_Click(object sender, RoutedEventArgs e)
@@ -96,13 +111,7 @@ namespace radio
             {
                 if (searchBox.Text != "")
                 {
-                    SearchingStrategy searchingStrategy = new SearchingStrategy();
-
                     GeneralSearcher generalSearcher = new GeneralSearcher();
-
-                    //Dictionary<string, ISearchingStrategy<Song>> searchs = new Dictionary<string, ISearchingStrategy<Song>>();
-                    //searchs.Add("Name", new SearchByName()); // array, searchcriteria, artistsearchcriteria, пробежать по комбобоксу,
-                    //// собрать все чекбоксы отмеченные, передать как массив в поисковик и вернуть все что нашли по чекнутым полям
 
                     Dictionary<string, ISearchingCriteria<String>> criteria = new Dictionary<string, ISearchingCriteria<String>>();
                     criteria.Add("Name", new NameSearchCriteria(searchBox.Text)); // add all who checked

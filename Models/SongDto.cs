@@ -4,49 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Xml.Serialization;
-
 namespace radio.Models
 {
-    [Serializable]
-    public class Song
+    public class SongDto
     {
-        [XmlAttribute]
         public int ID { get; set; }
-
-        [XmlAttribute]
         public string Name { get; set; }
-        [XmlAttribute]
         public string Artist { get; set; }
-        [XmlAttribute]
         public int Duration { get; set; }
-        [XmlAttribute]
         public string Album { get; set; }
-        [XmlAttribute]
         public int Year { get; set; }
-
-        [XmlArrayItem(Type = typeof(Tag))]
         public List<Tag> Tags { get; set; }
-
-        [XmlArrayItem(Type = typeof(Genre))]
         public List<Genre> Genres { get; set; }
 
-        [XmlIgnore]
         public string Path { get; set; }
 
-        [XmlIgnore]
         private string _stringDuration;
 
-        [XmlIgnore]
         public string StringDuration 
         {
             set { _stringDuration = value; } 
             get { return getStringDuration(Duration); }
         }
 
-        public Song() { }
+        public SongDto() { }
 
-        public Song(int ID, string Name, string Artist, int Duration, List<Tag> Tags, List<Genre> Genres, int Year)
+        public SongDto(int ID, string Name, string Artist, int Duration, List<Tag> Tags, List<Genre> Genres, int Year)
         {
             this.ID = ID;
             this.Name = Name;
@@ -57,16 +40,10 @@ namespace radio.Models
             this.Year = Year;
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
-
         public string getStringDuration(int seconds)
         {
             TimeSpan time = TimeSpan.FromSeconds(seconds);
             return time.ToString(@"hh\:mm\:ss");
         }
-
     }
 }

@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -61,20 +64,14 @@
     <Compile Include="DragDropListView\ListViewDragDropManager.cs" />
     <Compile Include="DragDropListView\MouseUtilities.cs" />
     <Compile Include="Loader\FileLoadParams.cs" />
+    <Compile Include="Models\SongDto.cs" />
     <Compile Include="Saver\FileSaveParams.cs" />
     <Compile Include="Search\ArtistSearchCriteria.cs" />
     <Compile Include="Search\GeneralSearcher.cs" />
     <Compile Include="Search\ISearcher.cs" />
     <Compile Include="Search\ISearchingCriteria.cs" />
     <Compile Include="Search\NameSearchCriteria.cs" />
-    <Compile Include="Search\SearchByArtist.cs" />
-    <Compile Include="Search\ArtistSearchParams.cs" />
-    <Compile Include="Search\ISearchingStrategy.cs" />
-    <Compile Include="Search\NameSearchParams.cs" />
-    <Compile Include="Search\SearchByName.cs" />
     <Compile Include="Search\SearchCriteria.cs" />
-    <Compile Include="Search\SearchingStrategy.cs" />
-    <Compile Include="Search\SearchParams.cs" />
     <Compile Include="Sort\ArtistComparer.cs" />
     <Compile Include="Sort\DurationComparer.cs" />
     <Compile Include="Sort\NameComparer.cs" />
@@ -132,6 +129,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

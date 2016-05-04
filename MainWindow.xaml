@@ -40,6 +40,7 @@
             <MenuItem Header="Tools"/>
             <MenuItem Header="Help"/>
         </Menu>
+
         <StackPanel HorizontalAlignment="Left" Height="35" Margin="0,20,0,0" VerticalAlignment="Top" Width="897" Background="#FFE0E0E0"/>
         <StackPanel HorizontalAlignment="Left" Height="119" Margin="0,55,0,0" VerticalAlignment="Top" Width="635" Background="#FFD8E8FF"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="148,102,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_start.png"/>
@@ -88,7 +89,7 @@
         <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="130,76,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="searchComboBox" HorizontalAlignment="Left" Margin="195,179,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="22" Margin="96,179,0,0" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Top" Width="94" FontStyle="Italic" TextChanged="searchBox_TextChanged"/>
-        <GroupBox Header="Track order system" HorizontalAlignment="Left" Margin="640,201,0,0" VerticalAlignment="Top" Height="328" Width="247"/>
+        <GroupBox Header="Track order system" HorizontalAlignment="Left" Margin="640,179,0,0" VerticalAlignment="Top" Height="350" Width="247"/>
         <Label x:Name="playlistDurationLabel" Content="duration of playlist" HorizontalAlignment="Left" Margin="320,529,0,0" VerticalAlignment="Top"/>
 
     </Grid>
