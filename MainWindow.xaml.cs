@@ -75,7 +75,7 @@ namespace radio
             var song = new Song(10, "Name", "Artist", 400, tags, genres, 1992);
             SongDto dto = mapper.Map<SongDto>(song);
 
-            config.AssertConfigurationIsValid();
+            config.AssertConfigurationIsValid(); // 1
 
         }
 
