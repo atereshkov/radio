@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.Windows.Input;
 using radio.Models;
 using radio.Collections;
 using radio.Loader;
@@ -22,6 +23,8 @@ namespace radio
 {
     public partial class MainWindow : Window
     {
+        Broadcast broadcast;
+
         MusicCollection musicList;
         Playlist playlist;
 
@@ -39,6 +42,9 @@ namespace radio
             //ListView1.ItemsSource = musicList.Songs;
             
             //durationLabel.Content = musicList.Count() + " tracks (" + musicList.getStringDuration() + ")";
+
+            broadcast = new Broadcast();
+            stopBroadcastButton.IsEnabled = false;
 
             playlist = new Playlist();
             playlistListView.ItemsSource = playlist.Songs;
@@ -76,7 +82,6 @@ namespace radio
             SongDto dto = mapper.Map<SongDto>(song);
 
             config.AssertConfigurationIsValid(); // 123
-
         }
 
         private void ListView1ColumnHeader_Click(object sender, RoutedEventArgs e)
@@ -181,31 +186,34 @@ namespace radio
 		#region OnListViewDrop
 
 		// Handles the Drop event for both ListViews.
-		void OnListViewDrop( object sender, DragEventArgs e )
+		void OnListViewDrop(object sender, DragEventArgs e)
 		{
-			if( e.Effects == DragDropEffects.None )
+			if(e.Effects == DragDropEffects.None )
 				return;
 
-			Song task = e.Data.GetData( typeof( Song ) ) as Song;
-			if( sender == this.ListView1 )
+			Song task = e.Data.GetData(typeof(Song)) as Song;
+
+			if (sender == this.ListView1)
 			{
-				if( this.dragMgr.IsDragInProgress )
+				if (this.dragMgr.IsDragInProgress)
 					return;
 
 				// An item was dragged from the bottom ListView into the top ListView
 				// so remove that item from the bottom ListView.
 				(this.playlistListView.ItemsSource as ObservableCollection<Song>).Remove(task);
                 DurationCalculating();
+                UpdatePlaylist();
 			}
 			else
 			{
-				if( this.dragMgr2.IsDragInProgress )
+				if (this.dragMgr2.IsDragInProgress)
 					return;
 
 				// An item was dragged from the top ListView into the bottom ListView
 				// so remove that item from the top ListView.
 				(this.ListView1.ItemsSource as ObservableCollection<Song>).Remove(task);
                 DurationCalculating();
+                UpdatePlaylist();
 			}
 		}
 
@@ -248,6 +256,62 @@ namespace radio
 
             playlistDurationLabel.Content = playlist.Count() + " tracks ("
                 + playlist.getStringDuration() + ")";
+        }
+
+        private void UpdatePlaylist()
+        {
+            if (broadcast.isOnline())
+            {
+                broadcast.UpdatePlaylist(playlist);
+            }
+        }
+
+        private void startBroadcastButton_Click(object sender, RoutedEventArgs e)
+        {
+            broadcast = new Broadcast(playlist);
+            broadcast.Start();
+
+            if (broadcast.isOnline())
+            {
+                stopBroadcastButton.IsEnabled = true;
+                startBroadcastButton.IsEnabled = false;
+            }
+        }
+
+        private void stopBroadcastButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (broadcast.isOnline())
+            {
+                broadcast.Stop();
+                startBroadcastButton.IsEnabled = true;
+                stopBroadcastButton.IsEnabled = false;
+            }
+        }
+
+        private void playlistListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (playlistListView.SelectedItems.Count == 1)
+            {
+                //MessageBox.Show("Double click on " + playlistListView.SelectedItem);
+
+                Song selectedSong = (Song) playlistListView.SelectedItem;
+
+                if (broadcast.isOnline())
+                {
+                    broadcast.setCurrentSong(selectedSong);
+                    (this.playlistListView.ItemsSource as ObservableCollection<Song>).Remove(selectedSong);
+                    setSongDataToForm(selectedSong);
+                    DurationCalculating();
+                    //UpdatePlaylist();
+                }
+
+            }
+        }
+
+        private void setSongDataToForm(Song song)
+        {
+            songTitleLabel.Content = song.Name;
+            songArtistLabel.Content = song.Artist;
         }
 
     }

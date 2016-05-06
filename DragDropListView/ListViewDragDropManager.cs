@@ -468,7 +468,13 @@ namespace radio.DragDropListView
                     return false;
 
                 ListViewItem item = this.GetListViewItem(this.indexToSelect);
-                Rect bounds = VisualTreeHelper.GetDescendantBounds(item);
+                Rect bounds = new Rect();
+
+                if (item != null)
+                {
+                    bounds = VisualTreeHelper.GetDescendantBounds(item);
+                }
+                    
                 Point ptInItem = this.listView.TranslatePoint(this.ptMouseDown, item);
 
                 // In case the cursor is at the very top or bottom of the ListViewItem

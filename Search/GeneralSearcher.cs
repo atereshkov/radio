@@ -26,7 +26,7 @@ namespace radio.Search
                 {
                     if ((song.Name.Contains(kvp.Value.getCriteria()) || 
                         song.Artist.Contains(kvp.Value.getCriteria())) && 
-                        !searchResults.Contains(song))
+                        !searchResults.Contains(song)) // ?
                     {
                         searchResults.Add(song);
                     }

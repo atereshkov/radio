@@ -48,7 +48,7 @@
         <Image HorizontalAlignment="Left" Height="48" Margin="254,102,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_next.png"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="201,102,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_stop.png"/>
         <Label Content="Listeners:" HorizontalAlignment="Left" Margin="780,25,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button Content="Start/Stop" HorizontalAlignment="Left" Margin="211,28,0,0" VerticalAlignment="Top" Width="104"/>
+        <Button x:Name="startBroadcastButton" Content="Start" HorizontalAlignment="Left" Margin="211,28,0,0" VerticalAlignment="Top" Width="62" Click="startBroadcastButton_Click"/>
         <Label Content="Title:" HorizontalAlignment="Left" Margin="90,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.554,0.442"/>
         <Image HorizontalAlignment="Left" Height="75" Margin="10,76,0,0" VerticalAlignment="Top" Width="75" Source="Images/icons/no_poster.png"/>
         <Slider HorizontalAlignment="Left" Margin="96,149,0,0" VerticalAlignment="Top" Height="19" Width="206"/>
@@ -56,7 +56,7 @@
         <Label Content="offline" HorizontalAlignment="Left" Margin="75,24,0,0" VerticalAlignment="Top"/>
         <Label Content="0" HorizontalAlignment="Left" Margin="839,25,0,0" VerticalAlignment="Top"/>
         <Label x:Name="durationLabel" Content="duration" HorizontalAlignment="Left" Margin="0,529,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="playlistListView" HorizontalAlignment="Left" Height="328" Margin="320,201,0,0" VerticalAlignment="Top" Width="315" >
+        <ListView x:Name="playlistListView" HorizontalAlignment="Left" Height="328" Margin="320,201,0,0" VerticalAlignment="Top" Width="315" MouseDoubleClick="playlistListView_MouseDoubleClick" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="30" DisplayMemberBinding="{Binding ID}">
@@ -85,12 +85,13 @@
         <Label x:Name="label5" Content="Collection:" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Playlist:" HorizontalAlignment="Left" Margin="320,174,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2" Content="Artist:" HorizontalAlignment="Left" Margin="90,76,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Margin="125,55,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="130,76,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="songTitleLabel" Content="Label" HorizontalAlignment="Left" Margin="125,55,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="songArtistLabel" Content="Label" HorizontalAlignment="Left" Margin="130,76,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="searchComboBox" HorizontalAlignment="Left" Margin="195,179,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="22" Margin="96,179,0,0" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Top" Width="94" FontStyle="Italic" TextChanged="searchBox_TextChanged"/>
         <GroupBox Header="Track order system" HorizontalAlignment="Left" Margin="640,179,0,0" VerticalAlignment="Top" Height="350" Width="247"/>
         <Label x:Name="playlistDurationLabel" Content="duration of playlist" HorizontalAlignment="Left" Margin="320,529,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="stopBroadcastButton" Content="Stop" HorizontalAlignment="Left" Margin="278,28,0,0" VerticalAlignment="Top" Width="62" Click="stopBroadcastButton_Click"/>
 
     </Grid>
 </Window>
