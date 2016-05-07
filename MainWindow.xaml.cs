@@ -128,7 +128,7 @@ namespace radio
                     GeneralSearcher generalSearcher = new GeneralSearcher();
 
                     Dictionary<string, ISearchingCriteria<String>> criteria = new Dictionary<string, ISearchingCriteria<String>>();
-                    criteria.Add("Name", new NameSearchCriteria(searchBox.Text)); // add all who checked
+                    criteria.Add("Name", new NameSearchCriteria(searchBox.Text));
                     criteria.Add("Artist", new ArtistSearchCriteria(searchBox.Text));
 
                     ListView1.ItemsSource = generalSearcher.Search(criteria, musicList.Songs);
