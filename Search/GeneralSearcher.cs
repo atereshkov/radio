@@ -24,9 +24,8 @@ namespace radio.Search
             {
                 foreach (Song song in listToSearch)
                 {
-                    if ((song.Name.Contains(kvp.Value.getCriteria()) || 
-                        song.Artist.Contains(kvp.Value.getCriteria())) && 
-                        !searchResults.Contains(song)) // ?
+                    //if ((song.Name.Contains(kvp.Value.getCriteria()) || song.Artist.Contains(kvp.Value.getCriteria())) && !searchResults.Contains(song))
+                    //if ()
                     {
                         searchResults.Add(song);
                     }

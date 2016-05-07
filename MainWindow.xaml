@@ -53,7 +53,7 @@
         <Image HorizontalAlignment="Left" Height="75" Margin="10,76,0,0" VerticalAlignment="Top" Width="75" Source="Images/icons/no_poster.png"/>
         <Slider HorizontalAlignment="Left" Margin="96,149,0,0" VerticalAlignment="Top" Height="19" Width="206"/>
         <Label Content="Broadcast:" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="offline" HorizontalAlignment="Left" Margin="75,24,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="broadcastStatusLabel" Content="offline" HorizontalAlignment="Left" Margin="75,24,0,0" VerticalAlignment="Top"/>
         <Label Content="0" HorizontalAlignment="Left" Margin="839,25,0,0" VerticalAlignment="Top"/>
         <Label x:Name="durationLabel" Content="duration" HorizontalAlignment="Left" Margin="0,529,0,0" VerticalAlignment="Top"/>
         <ListView x:Name="playlistListView" HorizontalAlignment="Left" Height="328" Margin="320,201,0,0" VerticalAlignment="Top" Width="315" MouseDoubleClick="playlistListView_MouseDoubleClick" >

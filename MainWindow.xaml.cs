@@ -82,6 +82,15 @@ namespace radio
             SongDto dto = mapper.Map<SongDto>(song);
 
             config.AssertConfigurationIsValid(); // 123
+
+            // transfer dto
+            // trackorder from file (+ помещение в плейлист или отмена)
+            // broadcast play next (берет из плейлиста первый)
+            // кнопку prev заменить на pause
+            // доделать поиск
+            // помещать проигранную песню в history
+            // 
+
         }
 
         private void ListView1ColumnHeader_Click(object sender, RoutedEventArgs e)
@@ -211,7 +220,7 @@ namespace radio
 
 				// An item was dragged from the top ListView into the bottom ListView
 				// so remove that item from the top ListView.
-				(this.ListView1.ItemsSource as ObservableCollection<Song>).Remove(task);
+				//(this.ListView1.ItemsSource as ObservableCollection<Song>).Remove(task);
                 DurationCalculating();
                 UpdatePlaylist();
 			}
@@ -275,6 +284,7 @@ namespace radio
             {
                 stopBroadcastButton.IsEnabled = true;
                 startBroadcastButton.IsEnabled = false;
+                broadcastStatusLabel.Content = "online";
             }
         }
 
@@ -285,6 +295,7 @@ namespace radio
                 broadcast.Stop();
                 startBroadcastButton.IsEnabled = true;
                 stopBroadcastButton.IsEnabled = false;
+                broadcastStatusLabel.Content = "offline";
             }
         }
 
