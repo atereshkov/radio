@@ -86,7 +86,6 @@ namespace radio
             // transfer dto
             // trackorder from file (+ помещение в плейлист или отмена)
             // broadcast play next (берет из плейлиста первый)
-            // кнопку prev заменить на pause
             // доделать поиск
             // помещать проигранную песню в history
             // 
@@ -127,7 +126,7 @@ namespace radio
                 {
                     GeneralSearcher generalSearcher = new GeneralSearcher();
 
-                    Dictionary<string, ISearchingCriteria<String>> criteria = new Dictionary<string, ISearchingCriteria<String>>();
+                    Dictionary<string, ISearchingCriteria<bool>> criteria = new Dictionary<string, ISearchingCriteria<bool>>();
                     criteria.Add("Name", new NameSearchCriteria(searchBox.Text));
                     criteria.Add("Artist", new ArtistSearchCriteria(searchBox.Text));
 

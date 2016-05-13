@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using radio.Models;
+
 namespace radio.Search
 {
-    public class ArtistSearchCriteria : ISearchingCriteria<String>
+    public class ArtistSearchCriteria : ISearchingCriteria<bool>
     {
         public string Artist { get; set; }
 
@@ -20,9 +22,16 @@ namespace radio.Search
             this.Artist = artist;
         }
 
-        public new string getCriteria()
+        public bool checkCriteria(Song song)
         {
-            return Artist;
+            if (song.Artist.ToLower().Contains(Artist.ToLower()))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

@@ -144,7 +144,6 @@
     <Resource Include="Images\icons\play_back.png" />
     <Resource Include="Images\icons\play_next.png" />
     <Resource Include="Images\icons\play_pause.png" />
-    <Resource Include="Images\icons\play_previous.png" />
     <Resource Include="Images\icons\play_start.png" />
     <Resource Include="Images\icons\play_stop.png" />
   </ItemGroup>
