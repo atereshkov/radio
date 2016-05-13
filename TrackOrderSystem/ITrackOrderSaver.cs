@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace radio
+namespace radio.TrackOrderSystem
 {
-    class TrackOrderSystem
+    interface ITrackOrderSaver
     {
-        public TrackOrderSystem() { }
+        void Save();
     }
 }

@@ -18,6 +18,7 @@ using radio.Dialogs;
 using radio.DragDropListView;
 
 using AutoMapper;
+using radio.TrackOrderSystem;
 
 namespace radio
 {
@@ -27,6 +28,7 @@ namespace radio
 
         MusicCollection musicList;
         Playlist playlist;
+        ObservableCollection<TrackOrder> trackOrders;
 
         ListViewDragDropManager<Song> dragMgr;
         ListViewDragDropManager<Song> dragMgr2;
@@ -307,13 +309,12 @@ namespace radio
 
                 if (broadcast.isOnline())
                 {
-                    broadcast.setCurrentSong(selectedSong);
+                    //broadcast.setCurrentSong(selectedSong);
                     (this.playlistListView.ItemsSource as ObservableCollection<Song>).Remove(selectedSong);
                     setSongDataToForm(selectedSong);
                     DurationCalculating();
                     //UpdatePlaylist();
                 }
-
             }
         }
 
@@ -326,7 +327,51 @@ namespace radio
 
         private void playSongButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            broadcast.
+            //broadcast.
         }
+
+        private void ContextMenuItem1Clicked(object sender, RoutedEventArgs e)
+        {
+            // handle the event for the selected ListViewItem accessing it by
+            //ListViewItem selected_lvi = this.m_list.SelectedItem as ListViewItem;
+        }
+
+        private void ContextMenuItem2Clicked(object sender, RoutedEventArgs e)
+        {
+            // handle the event for the selected ListViewItem accessing it by
+            //ListViewItem selected_lvi = this.m_list.SelectedItem as ListViewItem;
+        }
+
+        private void trackOrderRefreshButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            FileLoadParams fileLoadParams = new FileLoadParams("orders.xml");
+            ILoader<ObservableCollection<TrackOrder>> ordersLoader = new OrdersLoader(fileLoadParams);
+            trackOrders = ordersLoader.Load();
+
+            trackOrderListView.ItemsSource = trackOrders;
+        }
+
+        private void rejectTrackOrderButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+
+            TrackOrderSaveParams trackOrderSaveParams = new TrackOrderSaveParams("orders.xml", trackOrders);
+            ITrackOrderSaver trackOrderSaver = new OrdersSaver(trackOrderSaveParams);
+            trackOrderSaver.Save();
+        }
+
+        private void acceptTrackOrderButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (trackOrderListView.SelectedItems.Count == 1)
+            {
+                TrackOrder selectedOrder = (TrackOrder) trackOrderListView.SelectedItem;
+                (this.trackOrderListView.ItemsSource as ObservableCollection<TrackOrder>).Remove(selectedOrder);
+
+                TrackOrderSaveParams trackOrderSaveParams = new TrackOrderSaveParams("orders.xml", trackOrders);
+                ITrackOrderSaver trackOrderSaver = new OrdersSaver(trackOrderSaveParams);
+                trackOrderSaver.Save();
+            }
+        }
+
     }
 }

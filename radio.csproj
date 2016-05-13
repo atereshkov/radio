@@ -86,8 +86,10 @@
     <Compile Include="Saver\SaveParams.cs" />
     <Compile Include="Loader\LoadParams.cs" />
     <Compile Include="Sort\SortingStrategy.cs" />
+    <Compile Include="TrackOrderSystem\ITrackOrderSaver.cs" />
+    <Compile Include="TrackOrderSystem\OrdersSaver.cs" />
     <Compile Include="TrackOrderSystem\TrackOrder.cs" />
-    <Compile Include="TrackOrderSystem\TrackOrderSystem.cs" />
+    <Compile Include="TrackOrderSystem\TrackOrderSaveParams.cs" />
     <Compile Include="Users\Customer.cs" />
     <Compile Include="Loader\FromFileLoader.cs" />
     <Compile Include="Saver\ToFileSaver.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Users\DJ.cs" />
     <Compile Include="Users\DJAssistant.cs" />
+    <Compile Include="TrackOrderSystem\OrdersLoader.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -148,6 +151,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icons\no_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\refreshblue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\accept.png" />
+    <Resource Include="Images\icons\reject.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
