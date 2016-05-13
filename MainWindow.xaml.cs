@@ -86,7 +86,6 @@ namespace radio
             // transfer dto
             // trackorder from file (+ помещение в плейлист или отмена)
             // broadcast play next (берет из плейлиста первый)
-            // доделать поиск
             // помещать проигранную песню в history
             // 
 
@@ -322,7 +321,12 @@ namespace radio
         {
             songTitleLabel.Content = song.Name;
             songArtistLabel.Content = song.Artist;
+            songDurationLabel.Content = song.getStringDuration(song.Duration);
         }
 
+        private void playSongButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
