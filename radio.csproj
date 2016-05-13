@@ -159,6 +159,12 @@
     <Resource Include="Images\icons\accept.png" />
     <Resource Include="Images\icons\reject.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MultiSelectComboBox\MultiSelectComboBox.csproj">
+      <Project>{6CD2F5EC-1AA3-40B4-AF09-05CB141FABA5}</Project>
+      <Name>MultiSelectComboBox</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

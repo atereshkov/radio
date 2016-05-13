@@ -33,6 +33,35 @@ namespace radio
         ListViewDragDropManager<Song> dragMgr;
         ListViewDragDropManager<Song> dragMgr2;
 
+        private Dictionary<string, object> _items;
+        private Dictionary<string, object> _selectedItems;
+
+        public Dictionary<string, object> SearchItems
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+
+            }
+        }
+
+        public Dictionary<string, object> SearchSelectedItems
+        {
+            get
+            {
+                return _selectedItems;
+            }
+            set
+            {
+                _selectedItems = value;
+
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -54,13 +83,6 @@ namespace radio
             //FileSaveParams fileSaveParams = new FileSaveParams("music_collection.xml", musicList.Songs);
             //IMusicCollectionSaver toFileSaver = new ToFileSaver(fileSaveParams);
             //toFileSaver.Save();
-
-            ObservableCollection<string> searchList = new ObservableCollection<string>();
-            searchList.Add("Name");
-            searchList.Add("Artist");
-            searchList.Add("Duration");
-            searchComboBox.ItemsSource = searchList;
-            searchComboBox.SelectedItem = searchList[0];
 
             dragMgr = new ListViewDragDropManager<Song>(this.ListView1);
             dragMgr2 = new ListViewDragDropManager<Song>(this.playlistListView);
@@ -90,6 +112,22 @@ namespace radio
             // broadcast play next (берет из плейлиста первый)
             // помещать проигранную песню в history
             // 
+
+            // combobox:
+
+            SearchItems = new Dictionary<string, object>();
+            SearchItems.Add("Name", "MAS");
+            SearchItems.Add("Artist", "TPJ");
+            SearchItems.Add("Duration", "SBC");
+            SearchItems.Add("Tags", "CBE");
+            SearchItems.Add("Genres", "CBE");
+
+            SearchSelectedItems = new Dictionary<string, object>();
+            SearchSelectedItems.Add("Name", "MAS");
+            SearchSelectedItems.Add("Artist", "TPJ");
+
+            MultiSearch.ItemsSource = SearchItems;
+            MultiSearch.SelectedItems = SearchSelectedItems;
 
         }
 
