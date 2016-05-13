@@ -12,8 +12,10 @@ namespace radio
     class Broadcast
     {
         public bool State { get; private set; }
-        public Playlist Playlist { get; set; }
+        public Playlist Playlist { get; private set; }
         public Song CurrentSong { get; private set; }
+
+        private bool isPaused;
 
         public Broadcast()
         {
@@ -45,9 +47,24 @@ namespace radio
             this.Playlist = playlist;
         }
 
-        public void setCurrentSong(Song song)
+        public void SetCurrentSong(Song song)
         {
             CurrentSong = song;
+        }
+
+        public void PlayNext()
+        {
+            CurrentSong = Playlist.Songs[0];
+        }
+
+        public void PauseSong()
+        {
+
+        }
+
+        public void StopSong()
+        {
+
         }
 
     }
