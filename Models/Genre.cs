@@ -23,5 +23,10 @@ namespace radio.Models
         {
             this.genre = genre;
         }
+
+        public override string ToString()
+        {
+            return genre;
+        }
     }
 }

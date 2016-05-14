@@ -168,6 +168,10 @@ namespace radio
                     Dictionary<string, ISearchingCriteria<bool>> criteria = new Dictionary<string, ISearchingCriteria<bool>>();
                     criteria.Add("Name", new NameSearchCriteria(searchBox.Text));
                     criteria.Add("Artist", new ArtistSearchCriteria(searchBox.Text));
+                    criteria.Add("Tags", new TagsSearchCriteria(searchBox.Text));
+                    criteria.Add("Genres", new GenresSearchCriteria(searchBox.Text));
+
+                    // TODO: CHECHED FROM MULTICOMBOBOX
 
                     ListView1.ItemsSource = generalSearcher.Search(criteria, musicList.Songs);
                 }

@@ -32,6 +32,26 @@ namespace radio.Models
         public List<Genre> Genres { get; set; }
 
         [XmlIgnore]
+        private string _stringTags;
+
+        [XmlIgnore]
+        public string StringTags
+        {
+            set { _stringTags = value; }
+            get { return GetStringTags(Tags); }
+        }
+
+        [XmlIgnore]
+        private string _stringGenres;
+
+        [XmlIgnore]
+        public string StringGenres
+        {
+            set { _stringGenres = value; }
+            get { return GetStringGenres(Genres); }
+        }
+
+        [XmlIgnore]
         public string Path { get; set; }
 
         [XmlIgnore]
@@ -66,6 +86,28 @@ namespace radio.Models
         {
             TimeSpan time = TimeSpan.FromSeconds(seconds);
             return time.ToString(@"hh\:mm\:ss");
+        }
+
+        public string GetStringTags(List<Tag> tags)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(Tag tag in tags)
+            {
+                sb.Append(tag + ", ");
+            }
+
+            return sb.ToString();
+        }
+
+        public string GetStringGenres(List<Genre> genres)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Genre genre in genres)
+            {
+                sb.Append(genre + ", ");
+            }
+
+            return sb.ToString();
         }
 
     }

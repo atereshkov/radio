@@ -24,5 +24,10 @@ namespace radio.Models
             this.tag = tag;
         }
 
+        public override string ToString()
+        {
+            return tag;
+        }
+
     }
 }

@@ -68,9 +68,11 @@
     <Compile Include="Saver\FileSaveParams.cs" />
     <Compile Include="Search\ArtistSearchCriteria.cs" />
     <Compile Include="Search\GeneralSearcher.cs" />
+    <Compile Include="Search\GenresSearchCriteria.cs" />
     <Compile Include="Search\ISearcher.cs" />
     <Compile Include="Search\ISearchingCriteria.cs" />
     <Compile Include="Search\NameSearchCriteria.cs" />
+    <Compile Include="Search\TagsSearchCriteria.cs" />
     <Compile Include="Sort\ArtistComparer.cs" />
     <Compile Include="Sort\DurationComparer.cs" />
     <Compile Include="Sort\NameComparer.cs" />
