@@ -92,6 +92,7 @@
     <Compile Include="TrackOrderSystem\OrdersSaver.cs" />
     <Compile Include="TrackOrderSystem\TrackOrder.cs" />
     <Compile Include="TrackOrderSystem\TrackOrderSaveParams.cs" />
+    <Compile Include="TrackOrderSystem\TrackOrderSearcher.cs" />
     <Compile Include="Users\Customer.cs" />
     <Compile Include="Loader\FromFileLoader.cs" />
     <Compile Include="Saver\ToFileSaver.cs" />

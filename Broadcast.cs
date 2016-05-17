@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 using radio.Collections;
 using radio.Models;
@@ -17,9 +18,13 @@ namespace radio
 
         private bool isPaused;
 
+        private DispatcherTimer timer = new DispatcherTimer();
+
         public Broadcast()
         {
-
+            timer.Tick += new EventHandler(timerTick);
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
         }
 
         public Broadcast(Playlist playlist)
@@ -65,6 +70,11 @@ namespace radio
         public void StopSong()
         {
 
+        }
+
+        private void timerTick(object sender, EventArgs e)
+        {
+            
         }
 
     }

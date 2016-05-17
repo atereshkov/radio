@@ -66,23 +66,11 @@ namespace radio
         {
             InitializeComponent();
 
-            //FileLoadParams fileLoadParams = new FileLoadParams("music_collection.xml");
-            //ILoader<ObservableCollection<Song>> fromFileLoader = new FromFileLoader(fileLoadParams);
-            //musicList = new MusicCollection(fromFileLoader.Load(), "music collection");
-
-            //ListView1.ItemsSource = musicList.Songs;
-            
-            //durationLabel.Content = musicList.Count() + " tracks (" + musicList.getStringDuration() + ")";
-
             broadcast = new Broadcast();
             stopBroadcastButton.IsEnabled = false;
 
             playlist = new Playlist();
             playlistListView.ItemsSource = playlist.Songs;
-
-            //FileSaveParams fileSaveParams = new FileSaveParams("music_collection.xml", musicList.Songs);
-            //IMusicCollectionSaver toFileSaver = new ToFileSaver(fileSaveParams);
-            //toFileSaver.Save();
 
             dragMgr = new ListViewDragDropManager<Song>(this.ListView1);
             dragMgr2 = new ListViewDragDropManager<Song>(this.playlistListView);
@@ -108,12 +96,8 @@ namespace radio
             config.AssertConfigurationIsValid(); // 123
 
             // transfer dto
-            // trackorder from file (+ помещение в плейлист или отмена)
             // broadcast play next (берет из плейлиста первый)
             // помещать проигранную песню в history
-            // 
-
-            // combobox:
 
             SearchItems = new Dictionary<string, object>();
             SearchItems.Add("Name", "MAS");
@@ -193,28 +177,28 @@ namespace radio
 			// This shows how to customize the behavior of a drop.
 			// Here we perform a swap, instead of just moving the dropped item.
 
-			int higherIdx = Math.Max( e.OldIndex, e.NewIndex );
-			int lowerIdx = Math.Min( e.OldIndex, e.NewIndex );
+			int higherIdx = Math.Max(e.OldIndex, e.NewIndex);
+			int lowerIdx = Math.Min(e.OldIndex, e.NewIndex);
 
-			if( lowerIdx < 0 )
+			if(lowerIdx < 0)
 			{
 				// The item came from the lower ListView
 				// so just insert it.
-				e.ItemsSource.Insert( higherIdx, e.DataItem );
+				e.ItemsSource.Insert(higherIdx, e.DataItem);
 			}
 			else
 			{
 				// null values will cause an error when calling Move.
 				// It looks like a bug in ObservableCollection to me.
-				if( e.ItemsSource[lowerIdx] == null ||
-					e.ItemsSource[higherIdx] == null )
+				if(e.ItemsSource[lowerIdx] == null ||
+					e.ItemsSource[higherIdx] == null)
 					return;
 
 				// The item came from the ListView into which
 				// it was dropped, so swap it with the item
 				// at the target index.
-				e.ItemsSource.Move( lowerIdx, higherIdx );
-				e.ItemsSource.Move( higherIdx - 1, lowerIdx );
+				e.ItemsSource.Move(lowerIdx, higherIdx);
+				e.ItemsSource.Move(higherIdx - 1, lowerIdx);
 			}
 
 			// Set this to 'Move' so that the OnListViewDrop knows to 
@@ -374,14 +358,30 @@ namespace radio
 
         private void ContextMenuItem1Clicked(object sender, RoutedEventArgs e)
         {
-            // handle the event for the selected ListViewItem accessing it by
-            //ListViewItem selected_lvi = this.m_list.SelectedItem as ListViewItem;
+            AcceptTrackOrder();
         }
 
         private void ContextMenuItem2Clicked(object sender, RoutedEventArgs e)
         {
-            // handle the event for the selected ListViewItem accessing it by
-            //ListViewItem selected_lvi = this.m_list.SelectedItem as ListViewItem;
+            RejectTrackOrder();
+        }
+
+        private void RemoveFromCillectionClicked(object sender, RoutedEventArgs e)
+        {
+            if (ListView1.SelectedItems.Count == 1)
+            {
+                Song selectedSong = (Song) ListView1.SelectedItem;
+                (this.ListView1.ItemsSource as ObservableCollection<Song>).Remove(selectedSong);
+            }
+        }
+
+        private void RemoveFromPlaylistClicked(object sender, RoutedEventArgs e)
+        {
+            if (playlistListView.SelectedItems.Count == 1)
+            {
+                Song selectedSong = (Song)playlistListView.SelectedItem;
+                (this.playlistListView.ItemsSource as ObservableCollection<Song>).Remove(selectedSong);
+            }
         }
 
         private void trackOrderRefreshButton_MouseUp(object sender, MouseButtonEventArgs e)
@@ -395,18 +395,38 @@ namespace radio
 
         private void rejectTrackOrderButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
-
-            TrackOrderSaveParams trackOrderSaveParams = new TrackOrderSaveParams("orders.xml", trackOrders);
-            ITrackOrderSaver trackOrderSaver = new OrdersSaver(trackOrderSaveParams);
-            trackOrderSaver.Save();
+            RejectTrackOrder();
         }
 
         private void acceptTrackOrderButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            AcceptTrackOrder();
+        }
+
+        private void AcceptTrackOrder()
+        {
             if (trackOrderListView.SelectedItems.Count == 1)
             {
                 TrackOrder selectedOrder = (TrackOrder) trackOrderListView.SelectedItem;
+                TrackOrderSearcher trackOrderSearcher = new TrackOrderSearcher(musicList, selectedOrder);
+
+                if (trackOrderSearcher.Search())
+                {
+                    playlist.Add(trackOrderSearcher.foundedSong);
+
+                    (this.trackOrderListView.ItemsSource as ObservableCollection<TrackOrder>).Remove(selectedOrder);
+                    TrackOrderSaveParams trackOrderSaveParams = new TrackOrderSaveParams("orders.xml", trackOrders);
+                    ITrackOrderSaver trackOrderSaver = new OrdersSaver(trackOrderSaveParams);
+                    trackOrderSaver.Save();
+                }
+            }    
+        }
+
+        private void RejectTrackOrder()
+        {
+            if (trackOrderListView.SelectedItems.Count == 1)
+            {
+                TrackOrder selectedOrder = (TrackOrder)trackOrderListView.SelectedItem;
                 (this.trackOrderListView.ItemsSource as ObservableCollection<TrackOrder>).Remove(selectedOrder);
 
                 TrackOrderSaveParams trackOrderSaveParams = new TrackOrderSaveParams("orders.xml", trackOrders);

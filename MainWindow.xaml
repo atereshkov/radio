@@ -30,6 +30,11 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Remove" Click="RemoveFromCillectionClicked" />
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="ToolTip">
@@ -97,6 +102,11 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Remove" Click="RemoveFromPlaylistClicked" />
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
         <Label x:Name="label5" Content="Collection:" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Playlist:" HorizontalAlignment="Left" Margin="320,174,0,0" VerticalAlignment="Top"/>
@@ -163,8 +173,8 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <Image x:Name="rejectTrackOrderButton" HorizontalAlignment="Left" Height="24" Margin="649,199,0,0" VerticalAlignment="Top" Width="24" Cursor="Hand" Source="Images/icons/accept.png" MouseUp="rejectTrackOrderButton_MouseUp"/>
-        <Image x:Name="acceptTrackOrderButton" HorizontalAlignment="Left" Height="24" Margin="678,199,0,0" VerticalAlignment="Top" Width="24" Cursor="Hand" Source="Images/icons/reject.png" MouseUp="acceptTrackOrderButton_MouseUp"/>
+        <Image x:Name="acceptTrackOrderButton" HorizontalAlignment="Left" Height="24" Margin="649,199,0,0" VerticalAlignment="Top" Width="24" Cursor="Hand" Source="Images/icons/accept.png" MouseUp="acceptTrackOrderButton_MouseUp"/>
+        <Image x:Name="rejectTrackOrderButton1" HorizontalAlignment="Left" Height="24" Margin="678,199,0,0" VerticalAlignment="Top" Width="24" Cursor="Hand" Source="Images/icons/reject.png" MouseUp="rejectTrackOrderButton_MouseUp"/>
         <control:MultiSelectComboBox x:Name="MultiSearch" HorizontalAlignment="Left" Margin="201,177,0,0" VerticalAlignment="Top" Width="114"/>
 
     </Grid>

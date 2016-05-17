@@ -12,7 +12,7 @@ using radio.Search;
 
 namespace radio.Collections
 {
-    class MusicCollection 
+    public class MusicCollection 
     {
         public string Name { get; set; }
 
