@@ -26,5 +26,11 @@ namespace radio.Collections
             this.Duration = Duration;
         }
 
+        public Playlist(ObservableCollection<Song> songs, string name)
+        {
+            this.Songs = songs;
+            this.Name = name;
+        }
+
     }
 }

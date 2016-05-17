@@ -83,7 +83,7 @@ namespace radio
             dragMgr.ShowDragAdorner = true;
 
             // AutoMapper test:
-
+            /*
             List<Tag> tags = new List<Tag>();
             List<Genre> genres = new List<Genre>();
 
@@ -94,7 +94,8 @@ namespace radio
             SongDto dto = mapper.Map<SongDto>(song);
 
             config.AssertConfigurationIsValid(); // 123
-
+            */
+             
             // transfer dto
             // broadcast play next (берет из плейлиста первый)
             // помещать проигранную песню в history
@@ -130,7 +131,8 @@ namespace radio
 
             try
             {
-                sortingStrategy.SetStrategy(sorts[sortBy], musicList.Songs, order);
+                if (musicList != null)
+                    sortingStrategy.SetStrategy(sorts[sortBy], musicList.Songs, order);
             }
             catch (KeyNotFoundException)
             {
@@ -150,10 +152,15 @@ namespace radio
                     GeneralSearcher generalSearcher = new GeneralSearcher();
 
                     Dictionary<string, ISearchingCriteria<bool>> criteria = new Dictionary<string, ISearchingCriteria<bool>>();
-                    criteria.Add("Name", new NameSearchCriteria(searchBox.Text));
-                    criteria.Add("Artist", new ArtistSearchCriteria(searchBox.Text));
-                    criteria.Add("Tags", new TagsSearchCriteria(searchBox.Text));
-                    criteria.Add("Genres", new GenresSearchCriteria(searchBox.Text));
+
+                    if (SearchSelectedItems.ContainsKey("Name"))
+                        criteria.Add("Name", new NameSearchCriteria(searchBox.Text));
+                    if (SearchSelectedItems.ContainsKey("Artist"))
+                        criteria.Add("Artist", new ArtistSearchCriteria(searchBox.Text));
+                    if (SearchSelectedItems.ContainsKey("Tags"))
+                        criteria.Add("Tags", new TagsSearchCriteria(searchBox.Text));
+                    if (SearchSelectedItems.ContainsKey("Genres"))
+                        criteria.Add("Genres", new GenresSearchCriteria(searchBox.Text));
 
                     // TODO: CHECHED FROM MULTICOMBOBOX
 
@@ -169,7 +176,7 @@ namespace radio
         }
 
 
-        // for drag and drop
+        // drag and drop
         #region dragMgr_ProcessDrop
 
         void dragMgr_ProcessDrop( object sender, ProcessDropEventArgs<Song> e )
@@ -287,10 +294,12 @@ namespace radio
 
         private void DurationCalculating()
         {
-            durationLabel.Content = musicList.Count() + " tracks (" + musicList.getStringDuration() + ")";
+            if (musicList != null)
+                durationLabel.Content = musicList.Count() + " tracks (" + musicList.getStringDuration() + ")";
 
-            playlistDurationLabel.Content = playlist.Count() + " tracks ("
-                + playlist.getStringDuration() + ")";
+            if (musicList != null)
+                playlistDurationLabel.Content = playlist.Count() + " tracks ("
+                    + playlist.getStringDuration() + ")";
         }
 
         private void UpdatePlaylist()
@@ -433,6 +442,35 @@ namespace radio
                 ITrackOrderSaver trackOrderSaver = new OrdersSaver(trackOrderSaveParams);
                 trackOrderSaver.Save();
             }
+        }
+
+        private void openPlaylistItem_Click(object sender, RoutedEventArgs e)
+        {
+            string rez;
+            CustomOpenDialog customOpenDialog = new CustomOpenDialog();
+
+            if (customOpenDialog.Create(out rez))
+            {
+                FileLoadParams fileLoadParams = new FileLoadParams(rez);
+                ILoader<ObservableCollection<Song>> fromFileLoader = new FromFileLoader(fileLoadParams);
+                playlist = new Playlist(fromFileLoader.Load(), "playlist");
+
+                playlistListView.ItemsSource = playlist.Songs;
+
+                DurationCalculating();
+
+                if (playlistListView.Items != null)
+                {
+                    playlistListView.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void savePlaylistItem_Click(object sender, RoutedEventArgs e)
+        {
+            CustomSaveDialog customSaveDialog = new CustomSaveDialog();
+            customSaveDialog.Create("playlist", ".xml",
+                "XML files (*.xml)|*.xml|All files (*.*)|*.*", playlist.Songs);
         }
 
     }

@@ -36,7 +36,8 @@ namespace radio.Sort
 
         public void Sort()
         {
-            _strategy.Sort(listToSort, order);
+            if (listToSort != null)
+                _strategy.Sort(listToSort, order);
         }
     }
 }

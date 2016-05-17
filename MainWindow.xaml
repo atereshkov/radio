@@ -57,13 +57,16 @@
                 <MenuItem x:Name="openMenuItem" Header="Open" HorizontalAlignment="Left" Width="140" Click="openMenuItem_Click"/>
                 <MenuItem x:Name="saveMenuItem" Header="Save" HorizontalAlignment="Left" Width="140" Click="saveMenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="Playlist"/>
+            <MenuItem Header="Playlist">
+                <MenuItem x:Name="openPlaylistItem" Header="Open" HorizontalAlignment="Left" Width="140" Click="openPlaylistItem_Click"/>
+                <MenuItem x:Name="savePlaylistItem" Header="Save" HorizontalAlignment="Left" Width="140" Click="savePlaylistItem_Click"/>
+            </MenuItem>
             <MenuItem Header="Tools"/>
             <MenuItem Header="Help"/>
         </Menu>
 
         <StackPanel HorizontalAlignment="Left" Height="35" Margin="0,20,0,0" VerticalAlignment="Top" Width="897" Background="#FFE0E0E0"/>
-        <StackPanel HorizontalAlignment="Left" Height="119" Margin="0,55,0,0" VerticalAlignment="Top" Width="635" Background="#FFD8E8FF"/>
+        <StackPanel HorizontalAlignment="Left" Height="119" Margin="0,55,0,0" VerticalAlignment="Top" Width="895" Background="#FFD8E8FF"/>
         <Image x:Name="playSongButton" HorizontalAlignment="Left" Height="48" Margin="148,102,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_start.png" MouseUp="playSongButton_MouseUp"/>
         <Image x:Name="pauseSongButton" HorizontalAlignment="Left" Height="48" Margin="95,102,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_pause.png"/>
         <Image x:Name="nextSongButton" HorizontalAlignment="Left" Height="48" Margin="254,102,0,0" VerticalAlignment="Top" Width="48" Cursor="Hand" Source="Images/icons/play_next.png"/>
