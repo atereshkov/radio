@@ -82,7 +82,7 @@ namespace radio.Models
             return Name;
         }
 
-        public string getStringDuration(int seconds)
+        private string getStringDuration(int seconds)
         {
             TimeSpan time = TimeSpan.FromSeconds(seconds);
             return time.ToString(@"hh\:mm\:ss");

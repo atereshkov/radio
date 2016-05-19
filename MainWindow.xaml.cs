@@ -31,6 +31,7 @@ namespace radio
         private ObservableCollection<TrackOrder> trackOrders;
 
         private DispatcherTimer listenersTimer = new DispatcherTimer();
+        private DispatcherTimer airtimeTimer = new DispatcherTimer();
 
         private ListViewDragDropManager<Song> dragMgr;
         private ListViewDragDropManager<Song> dragMgr2;
@@ -116,8 +117,10 @@ namespace radio
             MultiSearch.ItemsSource = SearchItems;
             MultiSearch.SelectedItems = SearchSelectedItems;
 
-            listenersTimer.Tick += new EventHandler(timerTick);
+            listenersTimer.Tick += new EventHandler(listenersTimerTick);
             listenersTimer.Interval = new TimeSpan(0, 0, 5);
+            airtimeTimer.Tick += new EventHandler(airtimeTimerTick);
+            airtimeTimer.Interval = new TimeSpan(0, 0, 1);
         }
 
         private void ListView1ColumnHeader_Click(object sender, RoutedEventArgs e)
@@ -325,6 +328,7 @@ namespace radio
                 startBroadcastButton.IsEnabled = false;
                 broadcastStatusLabel.Content = "online";
                 listenersTimer.Start();
+                airtimeTimer.Start();
             }
         }
 
@@ -338,6 +342,8 @@ namespace radio
                 broadcastStatusLabel.Content = "offline";
                 listenersTimer.Stop();
                 listenersLabel.Content = 0;
+                airtimeTimer.Stop();
+                airtimeLabel.Content = "Airtime: 00:00:00";
             }
         }
 
@@ -364,7 +370,8 @@ namespace radio
         {
             songTitleLabel.Content = song.Name;
             songArtistLabel.Content = song.Artist;
-            songDurationLabel.Content = song.getStringDuration(song.Duration);
+            //songDurationLabel.Content = song.getStringDuration(song.Duration);
+            songDurationLabel.Content = song.StringDuration;
         }
 
         private void playSongButton_MouseUp(object sender, MouseButtonEventArgs e)
@@ -484,10 +491,19 @@ namespace radio
                 "XML files (*.xml)|*.xml|All files (*.*)|*.*", playlist.Songs);
         }
 
-        private void timerTick(object sender, EventArgs e)
+        private void listenersTimerTick(object sender, EventArgs e)
         {
             listenersLabel.Content = broadcast.ListenersCount;
         }
 
+        private void airtimeTimerTick(object sender, EventArgs e)
+        {
+            airtimeLabel.Content = "Airtime: " + broadcast.StringAirtime;
+        }
+
+        private void trackOrderListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            AcceptTrackOrder();
+        }
     }
 }
