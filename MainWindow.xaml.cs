@@ -7,6 +7,8 @@ using System.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
+
 using radio.Models;
 using radio.Collections;
 using radio.Loader;
@@ -14,9 +16,7 @@ using radio.Saver;
 using radio.Sort;
 using radio.Search;
 using radio.Dialogs;
-
 using radio.DragDropListView;
-
 using AutoMapper;
 using radio.TrackOrderSystem;
 
@@ -24,14 +24,16 @@ namespace radio
 {
     public partial class MainWindow : Window
     {
-        Broadcast broadcast;
+        private Broadcast broadcast;
 
-        MusicCollection musicList;
-        Playlist playlist;
-        ObservableCollection<TrackOrder> trackOrders;
+        private MusicCollection musicList;
+        private Playlist playlist;
+        private ObservableCollection<TrackOrder> trackOrders;
 
-        ListViewDragDropManager<Song> dragMgr;
-        ListViewDragDropManager<Song> dragMgr2;
+        private DispatcherTimer listenersTimer = new DispatcherTimer();
+
+        private ListViewDragDropManager<Song> dragMgr;
+        private ListViewDragDropManager<Song> dragMgr2;
 
         private Dictionary<string, object> _items;
         private Dictionary<string, object> _selectedItems;
@@ -114,6 +116,8 @@ namespace radio
             MultiSearch.ItemsSource = SearchItems;
             MultiSearch.SelectedItems = SearchSelectedItems;
 
+            listenersTimer.Tick += new EventHandler(timerTick);
+            listenersTimer.Interval = new TimeSpan(0, 0, 5);
         }
 
         private void ListView1ColumnHeader_Click(object sender, RoutedEventArgs e)
@@ -320,6 +324,7 @@ namespace radio
                 stopBroadcastButton.IsEnabled = true;
                 startBroadcastButton.IsEnabled = false;
                 broadcastStatusLabel.Content = "online";
+                listenersTimer.Start();
             }
         }
 
@@ -331,6 +336,8 @@ namespace radio
                 startBroadcastButton.IsEnabled = true;
                 stopBroadcastButton.IsEnabled = false;
                 broadcastStatusLabel.Content = "offline";
+                listenersTimer.Stop();
+                listenersLabel.Content = 0;
             }
         }
 
@@ -430,7 +437,7 @@ namespace radio
                 }
                 else
                 {
-
+                    MessageBoxResult result = MessageBox.Show("Track is not found in your music collection!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }    
         }
@@ -475,6 +482,11 @@ namespace radio
             CustomSaveDialog customSaveDialog = new CustomSaveDialog();
             customSaveDialog.Create("playlist", ".xml",
                 "XML files (*.xml)|*.xml|All files (*.*)|*.*", playlist.Songs);
+        }
+
+        private void timerTick(object sender, EventArgs e)
+        {
+            listenersLabel.Content = broadcast.ListenersCount;
         }
 
     }

@@ -15,6 +15,7 @@ namespace radio
         public bool State { get; private set; }
         public Playlist Playlist { get; private set; }
         public Song CurrentSong { get; private set; }
+        public int ListenersCount { get; private set; }
 
         private bool isPaused;
 
@@ -22,24 +23,27 @@ namespace radio
 
         public Broadcast()
         {
-            timer.Tick += new EventHandler(timerTick);
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.Start();
+           
         }
 
         public Broadcast(Playlist playlist)
         {
             this.Playlist = playlist;
+
+            timer.Tick += new EventHandler(timerTick);
+            timer.Interval = new TimeSpan(0, 0, 1);
         }
 
         public void Start()
         {
             State = true;
+            timer.Start();
         }
 
         public void Stop()
         {
             State = false;
+            timer.Stop();
         }
 
         public bool isOnline()
@@ -74,7 +78,8 @@ namespace radio
 
         private void timerTick(object sender, EventArgs e)
         {
-            
+            Random rnd = new Random();
+            ListenersCount = rnd.Next(20, 30);
         }
 
     }
