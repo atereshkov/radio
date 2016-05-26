@@ -39,6 +39,8 @@ namespace radio
         private Dictionary<string, object> _items;
         private Dictionary<string, object> _selectedItems;
 
+        private int columnClickCount = 0;
+
         public Dictionary<string, object> SearchItems
         {
             get
@@ -128,7 +130,19 @@ namespace radio
             GridViewColumnHeader column = (sender as GridViewColumnHeader);
             string sortBy = column.Tag.ToString();
 
-            SortOrder order = SortOrder.Ascending;
+            SortOrder order;
+
+            if (columnClickCount == 0)
+            {
+                order = SortOrder.Ascending;
+            }
+            else
+            {
+                order = SortOrder.Descending;
+                columnClickCount = 0;
+            }
+            columnClickCount++;
+            
             SortingStrategy sortingStrategy = new SortingStrategy();
 
             Dictionary<string, ISortingStrategy> sorts = new Dictionary<string, ISortingStrategy>();
