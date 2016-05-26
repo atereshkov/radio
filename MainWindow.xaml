@@ -65,7 +65,9 @@
                 <MenuItem x:Name="openPlaylistItem" Header="Open" HorizontalAlignment="Left" Width="140" Click="openPlaylistItem_Click"/>
                 <MenuItem x:Name="savePlaylistItem" Header="Save" HorizontalAlignment="Left" Width="140" Click="savePlaylistItem_Click"/>
             </MenuItem>
-            <MenuItem Header="Tools"/>
+            <MenuItem Header="Tools">
+                <MenuItem x:Name="openSettingsItem" Header="Settings" HorizontalAlignment="Left" Width="140" />
+            </MenuItem>
             <MenuItem Header="Help"/>
         </Menu>
 
@@ -109,6 +111,21 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <UniformGrid Columns="1">
+                                <TextBlock Text="{Binding Artist}"/>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding StringDuration}"/>
+                                <TextBlock Text="{Binding StringTags}"/>
+                                <TextBlock Text="{Binding StringGenres}"/>
+                            </UniformGrid>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Remove" Click="RemoveFromPlaylistClicked" />
@@ -124,7 +141,7 @@
         <GroupBox Header="Track order system" HorizontalAlignment="Left" Margin="640,179,0,0" VerticalAlignment="Top" Height="350" Width="247" Grid.ColumnSpan="2"/>
         <Label x:Name="playlistDurationLabel" Content="0 tracks (00:00:00)" HorizontalAlignment="Left" Margin="526,398,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Button x:Name="stopBroadcastButton" Content="Stop" HorizontalAlignment="Left" Margin="278,28,0,0" VerticalAlignment="Top" Width="62" Click="stopBroadcastButton_Click" Grid.ColumnSpan="2"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="86" Margin="320,443,0,0" VerticalAlignment="Top" Width="315" Grid.ColumnSpan="2">
+        <ListView x:Name="historyListView" HorizontalAlignment="Left" Height="86" Margin="320,443,0,0" VerticalAlignment="Top" Width="315" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="30" DisplayMemberBinding="{Binding ID}">
@@ -184,6 +201,8 @@
         <Image x:Name="rejectTrackOrderButton1" HorizontalAlignment="Left" Height="24" Margin="678,199,0,0" VerticalAlignment="Top" Width="24" Cursor="Hand" Source="Images/icons/reject.png" MouseUp="rejectTrackOrderButton_MouseUp" Grid.ColumnSpan="2"/>
         <control:MultiSelectComboBox x:Name="MultiSearch" HorizontalAlignment="Left" Margin="201,177,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2"/>
         <Label x:Name="airtimeLabel" Content="Airtime: 00:00:00" HorizontalAlignment="Left" Margin="345,24,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <GroupBox x:Name="voiceGroupBox" Grid.ColumnSpan="2" Header="Voice FX" HorizontalAlignment="Left" Margin="640,55,0,0" VerticalAlignment="Top" Height="113" Width="247" BorderBrush="#FF009FFF"/>
+        <Button x:Name="micStateButton" Grid.ColumnSpan="2" Content="Mic off" HorizontalAlignment="Left" Margin="649,76,0,0" VerticalAlignment="Top" Width="69" Height="38"/>
 
     </Grid>
 </Window>

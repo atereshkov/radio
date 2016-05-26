@@ -95,6 +95,7 @@ namespace radio.Models
             {
                 sb.Append(tag + ", ");
             }
+            sb.Remove(sb.Length - 2, 2);
 
             return sb.ToString();
         }
@@ -106,6 +107,7 @@ namespace radio.Models
             {
                 sb.Append(genre + ", ");
             }
+            sb.Remove(sb.Length-2, 2);
 
             return sb.ToString();
         }
