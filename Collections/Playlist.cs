@@ -31,6 +31,5 @@ namespace radio.Collections
             this.Songs = songs;
             this.Name = name;
         }
-
     }
 }

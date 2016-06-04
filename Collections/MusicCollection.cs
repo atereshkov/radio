@@ -69,5 +69,15 @@ namespace radio.Collections
             Songs.Clear();
         }
 
+        public bool isEmpty()
+        {
+            if (Songs != null && Songs.Count > 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

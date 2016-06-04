@@ -174,16 +174,14 @@ namespace radio
 
                     Dictionary<string, ISearchingCriteria<bool>> criteria = new Dictionary<string, ISearchingCriteria<bool>>();
 
-                    if (SearchSelectedItems.ContainsKey("Name"))
-                        criteria.Add("Name", new NameSearchCriteria(searchBox.Text));
+                    if (SearchSelectedItems.ContainsKey("Title"))
+                        criteria.Add("Title", new NameSearchCriteria(searchBox.Text));
                     if (SearchSelectedItems.ContainsKey("Artist"))
                         criteria.Add("Artist", new ArtistSearchCriteria(searchBox.Text));
                     if (SearchSelectedItems.ContainsKey("Tags"))
                         criteria.Add("Tags", new TagsSearchCriteria(searchBox.Text));
                     if (SearchSelectedItems.ContainsKey("Genres"))
                         criteria.Add("Genres", new GenresSearchCriteria(searchBox.Text));
-
-                    // TODO: CHECHED FROM MULTICOMBOBOX
 
                     ListView1.ItemsSource = generalSearcher.Search(criteria, musicList.Songs);
                 }
@@ -308,11 +306,15 @@ namespace radio
 
         private void saveMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            if(musicList.Count() != 0)
+            if(musicList != null && !musicList.isEmpty())
             {
                 CustomSaveDialog customSaveDialog = new CustomSaveDialog();
                 customSaveDialog.Create("collection", ".xml",
                     "XML files (*.xml)|*.xml|All files (*.*)|*.*", musicList.Songs);
+            }
+            else
+            {
+                 MessageBoxResult result = MessageBox.Show("Music collections is empty! Nothing to save.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -503,11 +505,15 @@ namespace radio
 
         private void savePlaylistItem_Click(object sender, RoutedEventArgs e)
         {
-            if (playlist.Count() != 0)
+            if (playlist != null && !playlist.isEmpty())
             {
                 CustomSaveDialog customSaveDialog = new CustomSaveDialog();
                 customSaveDialog.Create("playlist", ".xml",
                     "XML files (*.xml)|*.xml|All files (*.*)|*.*", playlist.Songs);
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Playlist is empty! Nothing to save.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
