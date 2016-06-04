@@ -8,7 +8,7 @@ using Microsoft.Win32;
 
 namespace radio.Dialogs
 {
-    public class CustomOpenDialog
+    public class CustomOpenDialog 
     {
         public bool Create(out string FileName)
         {

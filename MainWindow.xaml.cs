@@ -106,14 +106,14 @@ namespace radio
             // помещать проигранную песню в history
 
             SearchItems = new Dictionary<string, object>();
-            SearchItems.Add("Name", "MAS");
+            SearchItems.Add("Title", "MAS");
             SearchItems.Add("Artist", "TPJ");
             SearchItems.Add("Duration", "SBC");
             SearchItems.Add("Tags", "CBE");
             SearchItems.Add("Genres", "CBE");
 
             SearchSelectedItems = new Dictionary<string, object>();
-            SearchSelectedItems.Add("Name", "MAS");
+            SearchSelectedItems.Add("Title", "MAS");
             SearchSelectedItems.Add("Artist", "TPJ");
 
             MultiSearch.ItemsSource = SearchItems;
@@ -135,13 +135,13 @@ namespace radio
             if (columnClickCount == 0)
             {
                 order = SortOrder.Ascending;
+                columnClickCount++;
             }
             else
             {
                 order = SortOrder.Descending;
                 columnClickCount = 0;
             }
-            columnClickCount++;
             
             SortingStrategy sortingStrategy = new SortingStrategy();
 
@@ -308,9 +308,12 @@ namespace radio
 
         private void saveMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CustomSaveDialog customSaveDialog = new CustomSaveDialog();
-            customSaveDialog.Create("collection", ".xml", 
-                "XML files (*.xml)|*.xml|All files (*.*)|*.*", musicList.Songs);
+            if(musicList.Count() != 0)
+            {
+                CustomSaveDialog customSaveDialog = new CustomSaveDialog();
+                customSaveDialog.Create("collection", ".xml",
+                    "XML files (*.xml)|*.xml|All files (*.*)|*.*", musicList.Songs);
+            }
         }
 
         private void DurationCalculating()
@@ -500,9 +503,12 @@ namespace radio
 
         private void savePlaylistItem_Click(object sender, RoutedEventArgs e)
         {
-            CustomSaveDialog customSaveDialog = new CustomSaveDialog();
-            customSaveDialog.Create("playlist", ".xml",
-                "XML files (*.xml)|*.xml|All files (*.*)|*.*", playlist.Songs);
+            if (playlist.Count() != 0)
+            {
+                CustomSaveDialog customSaveDialog = new CustomSaveDialog();
+                customSaveDialog.Create("playlist", ".xml",
+                    "XML files (*.xml)|*.xml|All files (*.*)|*.*", playlist.Songs);
+            }
         }
 
         private void listenersTimerTick(object sender, EventArgs e)
@@ -519,5 +525,16 @@ namespace radio
         {
             AcceptTrackOrder();
         }
+
+        private void micStateButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            micStateButton.Content = "Mic on";
+        }
+
+        private void micStateButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            micStateButton.Content = "Mic off";
+        }
+
     }
 }

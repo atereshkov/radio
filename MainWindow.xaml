@@ -135,8 +135,8 @@
         <Label x:Name="label5" Content="Collection:" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label x:Name="label1" Content="Playlist:" HorizontalAlignment="Left" Margin="320,174,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label x:Name="label2" Content="Artist:" HorizontalAlignment="Left" Margin="90,76,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Label x:Name="songTitleLabel" Content="Label" HorizontalAlignment="Left" Margin="125,55,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2"/>
-        <Label x:Name="songArtistLabel" Content="Label" HorizontalAlignment="Left" Margin="130,76,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="songTitleLabel" Content="Empty" HorizontalAlignment="Left" Margin="125,55,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <Label x:Name="songArtistLabel" Content="Empty" HorizontalAlignment="Left" Margin="130,76,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="22" Margin="75,178,0,0" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Top" Width="121" FontStyle="Italic" TextChanged="searchBox_TextChanged" Grid.ColumnSpan="2"/>
         <GroupBox Header="Track order system" HorizontalAlignment="Left" Margin="640,179,0,0" VerticalAlignment="Top" Height="350" Width="247" Grid.ColumnSpan="2"/>
         <Label x:Name="playlistDurationLabel" Content="0 tracks (00:00:00)" HorizontalAlignment="Left" Margin="526,398,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
@@ -202,7 +202,7 @@
         <control:MultiSelectComboBox x:Name="MultiSearch" HorizontalAlignment="Left" Margin="201,177,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2"/>
         <Label x:Name="airtimeLabel" Content="Airtime: 00:00:00" HorizontalAlignment="Left" Margin="345,24,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <GroupBox x:Name="voiceGroupBox" Grid.ColumnSpan="2" Header="Voice FX" HorizontalAlignment="Left" Margin="640,55,0,0" VerticalAlignment="Top" Height="113" Width="247" BorderBrush="#FF009FFF"/>
-        <Button x:Name="micStateButton" Grid.ColumnSpan="2" Content="Mic off" HorizontalAlignment="Left" Margin="649,76,0,0" VerticalAlignment="Top" Width="69" Height="38"/>
+        <Button x:Name="micStateButton" Grid.ColumnSpan="2" Content="Mic off" HorizontalAlignment="Left" Margin="649,76,0,0" VerticalAlignment="Top" Width="69" Height="38" MouseLeftButtonDown="micStateButton_MouseLeftButtonDown" MouseLeftButtonUp="micStateButton_MouseLeftButtonUp"/>
 
     </Grid>
 </Window>
